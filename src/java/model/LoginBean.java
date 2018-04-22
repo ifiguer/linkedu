@@ -81,7 +81,7 @@ public class LoginBean {
             } else {
                 sendMail();
                 loginSuccess = true;
-                return "echo.xhtml";
+                return "landing.xhtml";
             }
 
         }
@@ -146,10 +146,9 @@ public class LoginBean {
         
         fullname = temp.getFirstname() + " " + temp.getLastname();
         setEmail(temp.getEmail());
-        setSecQuestion(temp.getSecQuestion());
-        setSecAnswer(temp.getSecAnswer());
         setFirstname(temp.getFirstname());
         setLastname(temp.getLastname());
+        setActScore(temp.getActScore());
         loginSuccess = true;
 
         return true;
@@ -189,6 +188,46 @@ public class LoginBean {
             return false;
         }
         return true;
+    }
+
+    public String getUniversityOfChoice() {
+        return universityOfChoice;
+    }
+
+    public void setUniversityOfChoice(String universityOfChoice) {
+        this.universityOfChoice = universityOfChoice;
+    }
+
+    public String getMajorOfChoice() {
+        return majorOfChoice;
+    }
+
+    public void setMajorOfChoice(String majorOfChoice) {
+        this.majorOfChoice = majorOfChoice;
+    }
+
+    public String[] getInterests() {
+        return interests;
+    }
+
+    public void setInterests(String[] interests) {
+        this.interests = interests;
+    }
+
+    public int getActScore() {
+        return actScore;
+    }
+
+    public void setActScore(int actScore) {
+        this.actScore = actScore;
+    }
+
+    public int getSatScore() {
+        return satScore;
+    }
+
+    public void setSatScore(int satScore) {
+        this.satScore = satScore;
     }
 
     public String getUsername() {

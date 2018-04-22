@@ -54,8 +54,7 @@ public class LoginBeanDA {
                 lb.setEmail(rs.getString("email"));
                 lb.setFirstname(rs.getString("firstname"));
                 lb.setLastname(rs.getString("lastname"));
-                lb.setSecAnswer(rs.getString("secAnswer"));
-                lb.setSecQuestion(rs.getString("secQuestion"));
+                lb.setActScore(rs.getInt("act"));
                 
             }
             DBConn.close();
@@ -115,9 +114,8 @@ public class LoginBeanDA {
                     + "', '" + cust.getFirstname()
                     + "', '" + cust.getLastname()
                     + "', '" + cust.getEmail()
-                    + "', '" + cust.getSecQuestion()
-                    + "', '" + cust.getSecAnswer()
-                    + "')";
+                    + "', " + cust.getActScore()
+                    + ")";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
             DBConn.close();

@@ -20,7 +20,7 @@ public class UniversityController {
 
     public String showUniversity() {
         UniversityDAO dao = new UniversityDAO();
-        university = dao.getUniversity(0);
+        university = dao.getUniversityByName(universityInput);
         return "university.xhtml";
     }
 
