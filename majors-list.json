@@ -1,0 +1,524 @@
+[
+  {
+    "majorname": "GENERAL AGRICULTURE"
+  },
+  {
+    "majorname": "AGRICULTURE PRODUCTION AND MANAGEMENT"
+  },
+  {
+    "majorname": "AGRICULTURAL ECONOMICS"
+  },
+  {
+    "majorname": "ANIMAL SCIENCES"
+  },
+  {
+    "majorname": "FOOD SCIENCE"
+  },
+  {
+    "majorname": "PLANT SCIENCE AND AGRONOMY"
+  },
+  {
+    "majorname": "SOIL SCIENCE"
+  },
+  {
+    "majorname": "MISCELLANEOUS AGRICULTURE"
+  },
+  {
+    "majorname": "FORESTRY"
+  },
+  {
+    "majorname": "NATURAL RESOURCES MANAGEMENT"
+  },
+  {
+    "majorname": "FINE ARTS"
+  },
+  {
+    "majorname": "DRAMA AND THEATER ARTS"
+  },
+  {
+    "majorname": "MUSIC"
+  },
+  {
+    "majorname": "VISUAL AND PERFORMING ARTS"
+  },
+  {
+    "majorname": "COMMERCIAL ART AND GRAPHIC DESIGN"
+  },
+  {
+    "majorname": "FILM VIDEO AND PHOTOGRAPHIC ARTS"
+  },
+  {
+    "majorname": "STUDIO ARTS"
+  },
+  {
+    "majorname": "MISCELLANEOUS FINE ARTS"
+  },
+  {
+    "majorname": "ENVIRONMENTAL SCIENCE"
+  },
+  {
+    "majorname": "BIOLOGY"
+  },
+  {
+    "majorname": "BIOCHEMICAL SCIENCES"
+  },
+  {
+    "majorname": "BOTANY"
+  },
+  {
+    "majorname": "MOLECULAR BIOLOGY"
+  },
+  {
+    "majorname": "ECOLOGY"
+  },
+  {
+    "majorname": "GENETICS"
+  },
+  {
+    "majorname": "MICROBIOLOGY"
+  },
+  {
+    "majorname": "PHARMACOLOGY"
+  },
+  {
+    "majorname": "PHYSIOLOGY"
+  },
+  {
+    "majorname": "ZOOLOGY"
+  },
+  {
+    "majorname": "NEUROSCIENCE"
+  },
+  {
+    "majorname": "MISCELLANEOUS BIOLOGY"
+  },
+  {
+    "majorname": "COGNITIVE SCIENCE AND BIOPSYCHOLOGY"
+  },
+  {
+    "majorname": "GENERAL BUSINESS"
+  },
+  {
+    "majorname": "ACCOUNTING"
+  },
+  {
+    "majorname": "ACTUARIAL SCIENCE"
+  },
+  {
+    "majorname": "BUSINESS MANAGEMENT AND ADMINISTRATION"
+  },
+  {
+    "majorname": "OPERATIONS LOGISTICS AND E-COMMERCE"
+  },
+  {
+    "majorname": "BUSINESS ECONOMICS"
+  },
+  {
+    "majorname": "MARKETING AND MARKETING RESEARCH"
+  },
+  {
+    "majorname": "FINANCE"
+  },
+  {
+    "majorname": "HUMAN RESOURCES AND PERSONNEL MANAGEMENT"
+  },
+  {
+    "majorname": "INTERNATIONAL BUSINESS"
+  },
+  {
+    "majorname": "HOSPITALITY MANAGEMENT"
+  },
+  {
+    "majorname": "MANAGEMENT INFORMATION SYSTEMS AND STATISTICS"
+  },
+  {
+    "majorname": "MISCELLANEOUS BUSINESS & MEDICAL ADMINISTRATION"
+  },
+  {
+    "majorname": "COMMUNICATIONS"
+  },
+  {
+    "majorname": "JOURNALISM"
+  },
+  {
+    "majorname": "MASS MEDIA"
+  },
+  {
+    "majorname": "ADVERTISING AND PUBLIC RELATIONS"
+  },
+  {
+    "majorname": "COMMUNICATION TECHNOLOGIES"
+  },
+  {
+    "majorname": "COMPUTER AND INFORMATION SYSTEMS"
+  },
+  {
+    "majorname": "COMPUTER PROGRAMMING AND DATA PROCESSING"
+  },
+  {
+    "majorname": "COMPUTER SCIENCE"
+  },
+  {
+    "majorname": "INFORMATION SCIENCES"
+  },
+  {
+    "majorname": "COMPUTER ADMINISTRATION MANAGEMENT AND SECURITY"
+  },
+  {
+    "majorname": "COMPUTER NETWORKING AND TELECOMMUNICATIONS"
+  },
+  {
+    "majorname": "MATHEMATICS"
+  },
+  {
+    "majorname": "APPLIED MATHEMATICS"
+  },
+  {
+    "majorname": "STATISTICS AND DECISION SCIENCE"
+  },
+  {
+    "majorname": "MATHEMATICS AND COMPUTER SCIENCE"
+  },
+  {
+    "majorname": "GENERAL EDUCATION"
+  },
+  {
+    "majorname": "EDUCATIONAL ADMINISTRATION AND SUPERVISION"
+  },
+  {
+    "majorname": "SCHOOL STUDENT COUNSELING"
+  },
+  {
+    "majorname": "ELEMENTARY EDUCATION"
+  },
+  {
+    "majorname": "MATHEMATICS TEACHER EDUCATION"
+  },
+  {
+    "majorname": "PHYSICAL AND HEALTH EDUCATION TEACHING"
+  },
+  {
+    "majorname": "EARLY CHILDHOOD EDUCATION"
+  },
+  {
+    "majorname": "SCIENCE AND COMPUTER TEACHER EDUCATION"
+  },
+  {
+    "majorname": "SECONDARY TEACHER EDUCATION"
+  },
+  {
+    "majorname": "SPECIAL NEEDS EDUCATION"
+  },
+  {
+    "majorname": "SOCIAL SCIENCE OR HISTORY TEACHER EDUCATION"
+  },
+  {
+    "majorname": "TEACHER EDUCATION: MULTIPLE LEVELS"
+  },
+  {
+    "majorname": "LANGUAGE AND DRAMA EDUCATION"
+  },
+  {
+    "majorname": "ART AND MUSIC EDUCATION"
+  },
+  {
+    "majorname": "MISCELLANEOUS EDUCATION"
+  },
+  {
+    "majorname": "LIBRARY SCIENCE"
+  },
+  {
+    "majorname": "ARCHITECTURE"
+  },
+  {
+    "majorname": "GENERAL ENGINEERING"
+  },
+  {
+    "majorname": "AEROSPACE ENGINEERING"
+  },
+  {
+    "majorname": "BIOLOGICAL ENGINEERING"
+  },
+  {
+    "majorname": "ARCHITECTURAL ENGINEERING"
+  },
+  {
+    "majorname": "BIOMEDICAL ENGINEERING"
+  },
+  {
+    "majorname": "CHEMICAL ENGINEERING"
+  },
+  {
+    "majorname": "CIVIL ENGINEERING"
+  },
+  {
+    "majorname": "COMPUTER ENGINEERING"
+  },
+  {
+    "majorname": "ELECTRICAL ENGINEERING"
+  },
+  {
+    "majorname": "ENGINEERING MECHANICS PHYSICS AND SCIENCE"
+  },
+  {
+    "majorname": "ENVIRONMENTAL ENGINEERING"
+  },
+  {
+    "majorname": "GEOLOGICAL AND GEOPHYSICAL ENGINEERING"
+  },
+  {
+    "majorname": "INDUSTRIAL AND MANUFACTURING ENGINEERING"
+  },
+  {
+    "majorname": "MATERIALS ENGINEERING AND MATERIALS SCIENCE"
+  },
+  {
+    "majorname": "MECHANICAL ENGINEERING"
+  },
+  {
+    "majorname": "METALLURGICAL ENGINEERING"
+  },
+  {
+    "majorname": "MINING AND MINERAL ENGINEERING"
+  },
+  {
+    "majorname": "NAVAL ARCHITECTURE AND MARINE ENGINEERING"
+  },
+  {
+    "majorname": "NUCLEAR ENGINEERING"
+  },
+  {
+    "majorname": "PETROLEUM ENGINEERING"
+  },
+  {
+    "majorname": "MISCELLANEOUS ENGINEERING"
+  },
+  {
+    "majorname": "ENGINEERING TECHNOLOGIES"
+  },
+  {
+    "majorname": "ENGINEERING AND INDUSTRIAL MANAGEMENT"
+  },
+  {
+    "majorname": "ELECTRICAL ENGINEERING TECHNOLOGY"
+  },
+  {
+    "majorname": "INDUSTRIAL PRODUCTION TECHNOLOGIES"
+  },
+  {
+    "majorname": "MECHANICAL ENGINEERING RELATED TECHNOLOGIES"
+  },
+  {
+    "majorname": "MISCELLANEOUS ENGINEERING TECHNOLOGIES"
+  },
+  {
+    "majorname": "MATERIALS SCIENCE"
+  },
+  {
+    "majorname": "NUTRITION SCIENCES"
+  },
+  {
+    "majorname": "GENERAL MEDICAL AND HEALTH SERVICES"
+  },
+  {
+    "majorname": "COMMUNICATION DISORDERS SCIENCES AND SERVICES"
+  },
+  {
+    "majorname": "HEALTH AND MEDICAL ADMINISTRATIVE SERVICES"
+  },
+  {
+    "majorname": "MEDICAL ASSISTING SERVICES"
+  },
+  {
+    "majorname": "MEDICAL TECHNOLOGIES TECHNICIANS"
+  },
+  {
+    "majorname": "HEALTH AND MEDICAL PREPARATORY PROGRAMS"
+  },
+  {
+    "majorname": "NURSING"
+  },
+  {
+    "majorname": "PHARMACY PHARMACEUTICAL SCIENCES AND ADMINISTRATION"
+  },
+  {
+    "majorname": "TREATMENT THERAPY PROFESSIONS"
+  },
+  {
+    "majorname": "COMMUNITY AND PUBLIC HEALTH"
+  },
+  {
+    "majorname": "MISCELLANEOUS HEALTH MEDICAL PROFESSIONS"
+  },
+  {
+    "majorname": "AREA ETHNIC AND CIVILIZATION STUDIES"
+  },
+  {
+    "majorname": "LINGUISTICS AND COMPARATIVE LANGUAGE AND LITERATURE"
+  },
+  {
+    "majorname": "FRENCH GERMAN LATIN AND OTHER COMMON FOREIGN LANGUAGE STUDIES"
+  },
+  {
+    "majorname": "OTHER FOREIGN LANGUAGES"
+  },
+  {
+    "majorname": "ENGLISH LANGUAGE AND LITERATURE"
+  },
+  {
+    "majorname": "COMPOSITION AND RHETORIC"
+  },
+  {
+    "majorname": "LIBERAL ARTS"
+  },
+  {
+    "majorname": "HUMANITIES"
+  },
+  {
+    "majorname": "INTERCULTURAL AND INTERNATIONAL STUDIES"
+  },
+  {
+    "majorname": "PHILOSOPHY AND RELIGIOUS STUDIES"
+  },
+  {
+    "majorname": "THEOLOGY AND RELIGIOUS VOCATIONS"
+  },
+  {
+    "majorname": "ANTHROPOLOGY AND ARCHEOLOGY"
+  },
+  {
+    "majorname": "ART HISTORY AND CRITICISM"
+  },
+  {
+    "majorname": "HISTORY"
+  },
+  {
+    "majorname": "UNITED STATES HISTORY"
+  },
+  {
+    "majorname": "COSMETOLOGY SERVICES AND CULINARY ARTS"
+  },
+  {
+    "majorname": "FAMILY AND CONSUMER SCIENCES"
+  },
+  {
+    "majorname": "MILITARY TECHNOLOGIES"
+  },
+  {
+    "majorname": "PHYSICAL FITNESS PARKS RECREATION AND LEISURE"
+  },
+  {
+    "majorname": "CONSTRUCTION SERVICES"
+  },
+  {
+    "majorname": "ELECTRICAL, MECHANICAL, AND PRECISION TECHNOLOGIES AND PRODUCTION"
+  },
+  {
+    "majorname": "TRANSPORTATION SCIENCES AND TECHNOLOGIES"
+  },
+  {
+    "majorname": "MULTI/INTERDISCIPLINARY STUDIES"
+  },
+  {
+    "majorname": "COURT REPORTING"
+  },
+  {
+    "majorname": "PRE-LAW AND LEGAL STUDIES"
+  },
+  {
+    "majorname": "CRIMINAL JUSTICE AND FIRE PROTECTION"
+  },
+  {
+    "majorname": "PUBLIC ADMINISTRATION"
+  },
+  {
+    "majorname": "PUBLIC POLICY"
+  },
+  {
+    "majorname": "N/A (less than bachelor's degree)"
+  },
+  {
+    "majorname": "PHYSICAL SCIENCES"
+  },
+  {
+    "majorname": "ASTRONOMY AND ASTROPHYSICS"
+  },
+  {
+    "majorname": "ATMOSPHERIC SCIENCES AND METEOROLOGY"
+  },
+  {
+    "majorname": "CHEMISTRY"
+  },
+  {
+    "majorname": "GEOLOGY AND EARTH SCIENCE"
+  },
+  {
+    "majorname": "GEOSCIENCES"
+  },
+  {
+    "majorname": "OCEANOGRAPHY"
+  },
+  {
+    "majorname": "PHYSICS"
+  },
+  {
+    "majorname": "MULTI-DISCIPLINARY OR GENERAL SCIENCE"
+  },
+  {
+    "majorname": "NUCLEAR, INDUSTRIAL RADIOLOGY, AND BIOLOGICAL TECHNOLOGIES"
+  },
+  {
+    "majorname": "PSYCHOLOGY"
+  },
+  {
+    "majorname": "EDUCATIONAL PSYCHOLOGY"
+  },
+  {
+    "majorname": "CLINICAL PSYCHOLOGY"
+  },
+  {
+    "majorname": "COUNSELING PSYCHOLOGY"
+  },
+  {
+    "majorname": "INDUSTRIAL AND ORGANIZATIONAL PSYCHOLOGY"
+  },
+  {
+    "majorname": "SOCIAL PSYCHOLOGY"
+  },
+  {
+    "majorname": "MISCELLANEOUS PSYCHOLOGY"
+  },
+  {
+    "majorname": "HUMAN SERVICES AND COMMUNITY ORGANIZATION"
+  },
+  {
+    "majorname": "SOCIAL WORK"
+  },
+  {
+    "majorname": "INTERDISCIPLINARY SOCIAL SCIENCES"
+  },
+  {
+    "majorname": "GENERAL SOCIAL SCIENCES"
+  },
+  {
+    "majorname": "ECONOMICS"
+  },
+  {
+    "majorname": "CRIMINOLOGY"
+  },
+  {
+    "majorname": "GEOGRAPHY"
+  },
+  {
+    "majorname": "INTERNATIONAL RELATIONS"
+  },
+  {
+    "majorname": "POLITICAL SCIENCE AND GOVERNMENT"
+  },
+  {
+    "majorname": "SOCIOLOGY"
+  },
+  {
+    "majorname": "MISCELLANEOUS SOCIAL SCIENCES"
+  }
+]
