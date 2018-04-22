@@ -1,14 +1,10 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>LinkedU</title>
-        <link href="master.css" rel="stylesheet"/>
-    </h:head>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/base.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:body>
+    <ui:define name="content"> 
         <div class="container">
             <h1>Sign Up</h1>
             <h:form class="signup-form">
@@ -36,11 +32,11 @@
                 <label for="security-answer">Security answer</label>
                 <h:inputText value="#{LoginBean.secAnswer}" id="security-answer" required="true"></h:inputText>
                 <h:commandButton value="Sign Up" action="#{LoginBean.persist()}" />
-                
+
             </h:form>
             <br/><h:outputText style="color:red" value="#{LoginBean.errorResponse}"></h:outputText>
             <h:outputText style="#{LoginBean.usernamestyle}" id="usernamemessage" value="#{LoginBean.usernamemessage}"></h:outputText>
         </div>
-    </h:body>
-</html>
+    </ui:define>
+</ui:composition>
 

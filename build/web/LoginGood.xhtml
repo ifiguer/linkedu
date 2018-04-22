@@ -1,19 +1,16 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Lab3WebApp</title>
-        <link href="master.css" rel="stylesheet"/>
-    </h:head>
-    <h:body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/base.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content"> 
         <div class="container">
             <p>Welcome, <h:outputText value="#{LoginBean.fullname}"></h:outputText></p>
             <p>Login Good. :)</p>
+
             <h:form>
                 <h:commandButton value="Update profile" action="update.xhtml"></h:commandButton>
             </h:form>
         </div>
-    </h:body>
-</html>
-
+    </ui:define>
+</ui:composition>
