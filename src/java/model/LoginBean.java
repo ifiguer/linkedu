@@ -36,6 +36,12 @@ public class LoginBean {
     private String email;
     private String secQuestion;
     private String secAnswer;
+    private String universityOfChoice;
+    private String majorOfChoice;
+    private String[] interests;
+    private int actScore;
+    private int satScore;
+    
 
     private String usernamestyle;
     private int loginAttempts = 0;
@@ -56,7 +62,8 @@ public class LoginBean {
     public String login() {
         if (validateLogin()) {
             loginSuccess = true;
-            return "LoginGood.xhtml";
+            
+            return "landing.xhtml";
         } else {
             loginSuccess = false;
             return "LoginBad.xhtml";
@@ -136,7 +143,7 @@ public class LoginBean {
             errorResponse = "Invalid username or password";
             return false;
         }
-
+        
         fullname = temp.getFirstname() + " " + temp.getLastname();
         setEmail(temp.getEmail());
         setSecQuestion(temp.getSecQuestion());

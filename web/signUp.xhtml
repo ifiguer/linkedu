@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Lab3WebApp</title>
+        <title>LinkedU</title>
         <link href="master.css" rel="stylesheet"/>
     </h:head>
 
@@ -36,6 +36,7 @@
                 <label for="security-answer">Security answer</label>
                 <h:inputText value="#{LoginBean.secAnswer}" id="security-answer" required="true"></h:inputText>
                 <h:commandButton value="Sign Up" action="#{LoginBean.persist()}" />
+                
             </h:form>
             <br/><h:outputText style="color:red" value="#{LoginBean.errorResponse}"></h:outputText>
             <h:outputText style="#{LoginBean.usernamestyle}" id="usernamemessage" value="#{LoginBean.usernamemessage}"></h:outputText>
