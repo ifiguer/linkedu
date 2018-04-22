@@ -5,6 +5,7 @@
  */
 package model;
 
+import beans.Feed;
 import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -24,6 +25,8 @@ import utility.EncryptPass;
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 public class LoginBean {
+    
+    private Feed feed;
 
     private String username;
 
@@ -41,7 +44,6 @@ public class LoginBean {
     private String[] interests;
     private int actScore;
     private int satScore;
-    
 
     private String usernamestyle;
     private int loginAttempts = 0;
