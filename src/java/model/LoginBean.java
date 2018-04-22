@@ -6,6 +6,7 @@
 package model;
 
 import beans.Feed;
+import dao.FeedDAO;
 import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,8 +26,7 @@ import utility.EncryptPass;
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 public class LoginBean {
-    
-    private Feed feed;
+
 
     private String username;
 
@@ -44,7 +44,7 @@ public class LoginBean {
     private String[] interests;
     private int actScore;
     private int satScore;
-
+    private Feed userFeed;
     private String usernamestyle;
     private int loginAttempts = 0;
     private String errorResponse = "";
@@ -64,7 +64,7 @@ public class LoginBean {
     public String login() {
         if (validateLogin()) {
             loginSuccess = true;
-            
+
             return "landing.xhtml";
         } else {
             loginSuccess = false;
@@ -145,8 +145,9 @@ public class LoginBean {
             errorResponse = "Invalid username or password";
             return false;
         }
-        
+
         fullname = temp.getFirstname() + " " + temp.getLastname();
+        userFeed = FeedDAO.getFeedsByUsername(username);
         setEmail(temp.getEmail());
         setFirstname(temp.getFirstname());
         setLastname(temp.getLastname());
@@ -177,7 +178,7 @@ public class LoginBean {
             return "Username is already taken";
         } else {
             usernamemessage = "Username is valid!";
-            usernamestyle="color:green";
+            usernamestyle = "color:green";
             return "Username is valid!";
 
         }
@@ -190,6 +191,10 @@ public class LoginBean {
             return false;
         }
         return true;
+    }
+
+    public Feed getUserFeed() {
+        return userFeed;
     }
 
     public String getUniversityOfChoice() {
