@@ -34,9 +34,8 @@ public class FeedDAO {
             PreparedStatement pstmt = DBConn.prepareStatement(queryString);
             ResultSet rs = pstmt.executeQuery();
 
-            boolean r = rs.next();
 //            lb = new Feed();
-            if (r) {
+            while(rs.next()) {
                 posts.add(rs.getString("content"));
             }
             DBConn.close();
