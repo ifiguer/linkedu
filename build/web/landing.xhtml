@@ -9,19 +9,19 @@
             <div class="profile">
                 <div class="profile-pic"></div>
                 <h:form>
-                    <div><h:outputText value="#{LoginBean.fullname}"></h:outputText></div>
-                    <div>ACT: <h:outputText value="#{LoginBean.actScore}"></h:outputText></div>
-                    <h:commandButton value="Update profile" action="update.xhtml"></h:commandButton>
+                    <p><h:outputText value="#{LoginBean.fullname}"></h:outputText></p>
+                    <p>ACT: <h:outputText value="#{LoginBean.actScore}"></h:outputText></p>
+                    <h:commandButton class="full-width" value="Update profile" action="update.xhtml"></h:commandButton>
                 </h:form>
             </div>
             <div class="feed">
                 <div class="new-post">
                     <h:form class="row">
-                        <h:inputText class="post-input" value=""></h:inputText>
-                        <h:commandButton value="Post"></h:commandButton>
+                        <h:inputText class="post-input" value="#{LoginBean.postContent}"></h:inputText>
+                        <h:commandButton value="Post" action="#{LoginBean.addPost}"></h:commandButton>
                     </h:form>
                 </div>
-                <c:forEach items="#{feed.posts}" var="post">
+                <c:forEach items="#{LoginBean.posts}" var="post">
                     <span class="post">#{post}</span>
                 </c:forEach>
             </div>
@@ -35,9 +35,8 @@
                 <p>Featured University</p>
                 <div class="featured-university">
                      <c:forEach items="#{universityController.featuredUniversities}" var="university">
-                        <span class="post">#{university.name}</span>
+                        <span class="">#{university.name}</span>
                     </c:forEach>
-                    <!--<span>ISU</span>-->
                 </div>
             </div>
         </div>

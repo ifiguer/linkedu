@@ -7,6 +7,8 @@ package model;
 
 import beans.Feed;
 import dao.FeedDAO;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -26,6 +28,8 @@ import utility.EncryptPass;
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 public class LoginBean {
+    
+    private List<String> posts;
 
     private String username;
     private String usernamemessage;
@@ -48,7 +52,19 @@ public class LoginBean {
     private int loginAttempts = 0;
     private String errorResponse = "";
     private boolean loginSuccess = false;
+    
+    public LoginBean() {
+        posts = new ArrayList<String>();
+    }
 
+    public List<String> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<String> posts) {
+        this.posts = posts;
+    }
+    
     public String update() {
         if (!password.equals(confirmPassword)) {
             errorResponse = "Passwords do not match";
@@ -90,12 +106,14 @@ public class LoginBean {
     }
 
     public String addPost() {
+        
+        FeedDAO dao = new FeedDAO();
 
-        if (FeedDAO.addPostToDB(username, postContent) != 1) {
+        if (dao.addPostToDB(username, postContent) != 1) {
             errorResponse = "There was a problem creating your post. Please try again later.";
             return "landing.xhtml";
         } else {
-            userFeed.addToList(postContent);
+            posts.add(postContent);
             postContent = "";
             return "landing.xhtml";
         }
@@ -146,6 +164,7 @@ public class LoginBean {
     }
 
     private boolean validateLogin() {
+        FeedDAO dao = new FeedDAO();
         LoginBean temp;
         if (loginAttempts >= 3) {
             errorResponse = "You have unsuccessfully logged in too many times. Please try again later.";
@@ -159,7 +178,7 @@ public class LoginBean {
         }
 
         fullname = temp.getFirstname() + " " + temp.getLastname();
-        userFeed = FeedDAO.getFeedsByUsername(username);
+        posts = dao.getFeedsByUsername(username);
         setEmail(temp.getEmail());
         setFirstname(temp.getFirstname());
         setLastname(temp.getLastname());

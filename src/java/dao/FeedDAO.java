@@ -7,13 +7,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import model.LoginBean;
 
 public class FeedDAO {
 
-    public static Feed getFeedsByUsername(String username) {
-        Feed lb = null;
+    public List<String> getFeedsByUsername(String username) {
+        List<String> posts = new ArrayList<String>();
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException e) {
@@ -33,13 +35,12 @@ public class FeedDAO {
             ResultSet rs = pstmt.executeQuery();
 
             boolean r = rs.next();
-            lb = new Feed();
+//            lb = new Feed();
             if (r) {
-                
-                lb.addToList(rs.getString("content"));
+                posts.add(rs.getString("content"));
             }
             DBConn.close();
-            return lb;
+            return posts;
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -49,7 +50,7 @@ public class FeedDAO {
         return null;
         
     }
-    public static int addPostToDB(String username, String postContent){
+    public int addPostToDB(String username, String postContent){
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException e) {

@@ -71,13 +71,17 @@ body {
     
 }
 
+.profile p {
+    margin: 0 0 5px 0;
+}
+
 .profile-pic {
-    float: left;
-    width: 50px;
-    height: 50px;
+    border: 4px solid lightsteelblue;
+    margin: auto;
+    width: 70px;
+    height: 70px;
     border-radius: 100%;
-    margin-right: 10px;
-    background: lightblue;
+    background: lightslategray;
 }
 
 .new-post, .post {
@@ -130,6 +134,10 @@ p, li {
     grid-template-columns: 1fr;
     grid-gap: 5px;
     align-items: center;
+}
+
+.full-width {
+    width: 100%;
 }
 
 .signup-form label {
