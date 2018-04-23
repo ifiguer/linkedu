@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import model.LoginBean;
 
 public class FeedDAO {
@@ -62,10 +63,12 @@ public class FeedDAO {
 
             String insertString;
             Statement stmt = DBConn.createStatement();
+            Date temp = new Date();
+            
             insertString = "INSERT INTO Project353.Posts VALUES ('"
                     + username
                     + "', '" + postContent
-                    + "')";
+                    + "', " + temp.getTime()+")";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
             DBConn.close();
