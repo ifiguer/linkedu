@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -18,6 +19,9 @@ import utility.EncryptPass;
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 public class LoginBean {
+    
+    @Inject
+    private FeedDAO feedDAO;
     
     private List<String> posts;
 
@@ -96,9 +100,7 @@ public class LoginBean {
 
     public String addPost() {
         
-        FeedDAO dao = new FeedDAO();
-
-        if (dao.addPostToDB(username, postContent) != 1) {
+        if (feedDAO.addPostToDB(username, postContent) != 1) {
             errorResponse = "There was a problem creating your post. Please try again later.";
             return "landing.xhtml";
         } else {
@@ -154,7 +156,6 @@ public class LoginBean {
     }
 
     private boolean validateLogin() {
-        FeedDAO dao = new FeedDAO();
         LoginBean temp;
         if (loginAttempts >= 3) {
             errorResponse = "You have unsuccessfully logged in too many times. Please try again later.";
@@ -168,7 +169,7 @@ public class LoginBean {
         }
 
         fullname = temp.getFirstname() + " " + temp.getLastname();
-        posts = dao.getFeedsByUsername(username);
+        posts = feedDAO.getFeedsByUsername(username);
         setEmail(temp.getEmail());
         setFirstname(temp.getFirstname());
         setLastname(temp.getLastname());
