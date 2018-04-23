@@ -8,9 +8,7 @@
     <ui:define name="content"> 
         <div class="container">
             <c:if test="${LoginBean.loginSuccess=='true'}">
-            <h1>Update</h1>
-            
-
+            <h1 class="title text-center">Update</h1>
                 <h:form class="signup-form">
                     <label for="username">Username</label>
                     <h:inputText value="#{LoginBean.username}" id="username" required="true" disabled="true"></h:inputText>

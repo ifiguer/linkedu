@@ -56,7 +56,7 @@ public class UniversityDAO {
         }
 
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
-           String queryString = "select * from Project353.University where Project353.University.featured";
+           String queryString = "select * from Universities where Universities.featured";
 
 // Note the use of a diff class, called PreparedStatement
             PreparedStatement pstmt = connection.prepareStatement(queryString);

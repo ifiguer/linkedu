@@ -27,13 +27,10 @@ public class UniversityController {
     }
 
     public ArrayList<University> getFeaturedUniversities() {
-    
         featured = UniversityDAO.getFeaturedUniversities();
-        
         return featured;
-        
     }
-    
+
     public String getName() {
         return university.getName();
     }

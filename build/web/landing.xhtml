@@ -5,21 +5,40 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="content">
-        <div class="container">
+        <div class="landing">
             <div class="profile">
+                <div class="profile-pic"></div>
                 <h:form>
-                    <p>Welcome, <h:outputText value="#{LoginBean.fullname}"></h:outputText></p>
-                    <p>ACT: <h:outputText value="#{LoginBean.actScore}"></h:outputText></p>
+                    <div><h:outputText value="#{LoginBean.fullname}"></h:outputText></div>
+                    <div>ACT: <h:outputText value="#{LoginBean.actScore}"></h:outputText></div>
                     <h:commandButton value="Update profile" action="update.xhtml"></h:commandButton>
                 </h:form>
             </div>
             <div class="feed">
+                <div class="new-post">
+                    <h:form class="row">
+                        <h:inputText class="post-input" value=""></h:inputText>
+                        <h:commandButton value="Post"></h:commandButton>
+                    </h:form>
+                </div>
                 <c:forEach items="#{feed.posts}" var="post">
-                    <p>#{post}</p>
+                    <span class="post">#{post}</span>
                 </c:forEach>
             </div>
             <div class="ads">
-
+                <div class="">
+                    <h:form class="row">
+                        <h:inputText value="#{universityController.university}"></h:inputText>
+                        <h:commandButton value="Search" action="#{universityController.showUniversity}"></h:commandButton>
+                    </h:form>
+                </div>
+                <p>Featured University</p>
+                <div class="featured-university">
+                     <c:forEach items="#{universityController.featuredUniversities}" var="university">
+                        <span class="post">#{university.name}</span>
+                    </c:forEach>
+                    <!--<span>ISU</span>-->
+                </div>
             </div>
         </div>
     </ui:define>
