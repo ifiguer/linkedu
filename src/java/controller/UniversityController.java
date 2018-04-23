@@ -1,6 +1,7 @@
 package controller;
 
 import dao.UniversityDAO;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import model.University;
 
@@ -8,6 +9,7 @@ import model.University;
 public class UniversityController {
 
     private String universityInput;
+    private ArrayList<University> featured;
     private University university;
 
     public String getUniversity() {
@@ -24,6 +26,14 @@ public class UniversityController {
         return "university.xhtml";
     }
 
+    public ArrayList<University> getFeaturedUniversities() {
+    
+        featured = UniversityDAO.getFeaturedUniversities();
+        
+        return featured;
+        
+    }
+    
     public String getName() {
         return university.getName();
     }
