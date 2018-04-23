@@ -25,7 +25,7 @@ public class FeedDAO {
 
             // The ? below are parameters (i.e., placeholders) to the query and are resolved
 // in the setString method below
-            String queryString = "select * from Project353.Posts join Project353.Posts on Project353.Users.userid = Project353.Posts.userid order by Project353.Posts.date desc";
+            String queryString = "select * from Project353.Posts join Project353.Users on Project353.Users.userid = Project353.Posts.userid order by Project353.Posts.date desc";
 
 // Note the use of a diff class, called PreparedStatement
             PreparedStatement pstmt = DBConn.prepareStatement(queryString);
