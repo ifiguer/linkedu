@@ -1,8 +1,3 @@
-/*
- * LoginBeanDA.java
- * Clint Riley, Chris Olson
- * March 27, 2010
- */
 package model;
 
 import java.sql.Connection;
@@ -12,20 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * Data access class for login process.
- *
- * @author Clint
- */
 public class LoginBeanDA {
 
-    /**
-     * Checks the passed in values against the database.
-     *
-     * @param username
-     * @param password
-     * @return true if this is a valid un/pw combination, false otherwise
-     */
     public static LoginBean validInfo(String username, String password) {
         LoginBean lb = null;
         try {
@@ -39,10 +22,10 @@ public class LoginBeanDA {
             Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
 
             // The ? below are parameters (i.e., placeholders) to the query and are resolved
-// in the setString method below
+            // in the setString method below
             String queryString = "select * from Project353.USERS where USERID = ? and PASSWORD = ?";
 
-// Note the use of a diff class, called PreparedStatement
+            // Note the use of a diff class, called PreparedStatement
             PreparedStatement pstmt = DBConn.prepareStatement(queryString);
             pstmt.setString(1, username); // replace the 1st ? with username
             pstmt.setString(2, password); // replace the 2nd ? with password
@@ -55,7 +38,7 @@ public class LoginBeanDA {
                 lb.setFirstname(rs.getString("firstname"));
                 lb.setLastname(rs.getString("lastname"));
                 lb.setActScore(rs.getInt("act"));
-                
+
             }
             DBConn.close();
             return lb;
@@ -122,7 +105,7 @@ public class LoginBeanDA {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        
+
         // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
 
@@ -143,13 +126,13 @@ public class LoginBeanDA {
             String insertString;
             Statement stmt = DBConn.createStatement();
             insertString = "UPDATE Project353.Users set ";
-         
+
             insertString += (cust.getPassword().equals("") ? "" : "password='" + cust.getPassword() + "',");
             insertString += (cust.getEmail().equals("") ? "" : "email='" + cust.getEmail() + "',");
-            insertString += (cust.getFirstname().equals("") ? "" : "firstname='" + cust.getFirstname()+ "',");
-            insertString += (cust.getLastname().equals("") ? "" : "lastname='" + cust.getLastname()+ "',");
-            insertString += (cust.getSecQuestion().equals("") ? "" : "secquestion='" + cust.getSecQuestion()+ "',");
-            insertString += (cust.getSecAnswer().equals("") ? "" : "secanswer='" + cust.getSecAnswer()+ "'");
+            insertString += (cust.getFirstname().equals("") ? "" : "firstname='" + cust.getFirstname() + "',");
+            insertString += (cust.getLastname().equals("") ? "" : "lastname='" + cust.getLastname() + "',");
+            insertString += (cust.getSecQuestion().equals("") ? "" : "secquestion='" + cust.getSecQuestion() + "',");
+            insertString += (cust.getSecAnswer().equals("") ? "" : "secanswer='" + cust.getSecAnswer() + "'");
             //insertString += " userid = '" + cust.getUsername() + "' ";
             insertString += " where userid='" + cust.getUsername() + "'";
             rowCount = stmt.executeUpdate(insertString);

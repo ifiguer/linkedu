@@ -32,22 +32,22 @@ public class FeedDAO {
             PreparedStatement pstmt = DBConn.prepareStatement(queryString);
             ResultSet rs = pstmt.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 posts.add(rs.getString("content"));
             }
-            
+
             DBConn.close();
             return posts;
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        
-        
+
         return null;
-        
+
     }
-    public int addPostToDB(String username, String postContent){
+
+    public int addPostToDB(String username, String postContent) {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException e) {
@@ -62,19 +62,19 @@ public class FeedDAO {
             String insertString;
             Statement stmt = DBConn.createStatement();
             Date temp = new Date();
-            
+
             insertString = "INSERT INTO Project353.Posts VALUES ('"
                     + username
                     + "', '" + postContent
-                    + "', " + temp.getTime()+")";
+                    + "', " + temp.getTime() + ")";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
             DBConn.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        
+
         // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
-    } 
+    }
 }

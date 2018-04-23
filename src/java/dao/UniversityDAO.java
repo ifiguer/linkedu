@@ -34,7 +34,7 @@ public class UniversityDAO {
             query.setString(1, name);
 
             ResultSet resultSet = query.executeQuery();
-            
+
             if (resultSet.next()) {
                 String n = resultSet.getString("name");
                 String description = resultSet.getString("description");
@@ -43,10 +43,11 @@ public class UniversityDAO {
         } catch (SQLException exception) {
             System.out.println("SQL ERROR: " + exception.getMessage());
         }
-        
+
         return university;
     }
-    public static ArrayList<University> getFeaturedUniversities(){
+
+    public static ArrayList<University> getFeaturedUniversities() {
         ArrayList<University> featured = new ArrayList<University>();
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -56,12 +57,12 @@ public class UniversityDAO {
         }
 
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
-           String queryString = "select * from Universities where Universities.featured";
+            String queryString = "select * from Universities where Universities.featured";
 
-// Note the use of a diff class, called PreparedStatement
+            // Note the use of a diff class, called PreparedStatement
             PreparedStatement pstmt = connection.prepareStatement(queryString);
             ResultSet rs = pstmt.executeQuery();
-            
+
             if (rs.next()) {
                 String n = rs.getString("name");
                 String description = rs.getString("description");
