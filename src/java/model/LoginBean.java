@@ -5,7 +5,6 @@
  */
 package model;
 
-import beans.Feed;
 import dao.FeedDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,6 @@ public class LoginBean {
     private String[] interests;
     private int actScore;
     private int satScore;
-    private Feed userFeed;
     private String postContent;
     private String usernamestyle;
     private int loginAttempts = 0;
@@ -54,7 +52,7 @@ public class LoginBean {
     private boolean loginSuccess = false;
     
     public LoginBean() {
-        posts = new ArrayList<String>();
+        posts = new ArrayList<>();
     }
 
     public List<String> getPosts() {
@@ -132,6 +130,7 @@ public class LoginBean {
         properties.setProperty("mail.smtp.port", "587");
 
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication("bmjame1@ilstu.edu", "oops");
             }
@@ -222,10 +221,6 @@ public class LoginBean {
             return false;
         }
         return true;
-    }
-
-    public Feed getUserFeed() {
-        return userFeed;
     }
 
     public String getUniversityOfChoice() {
