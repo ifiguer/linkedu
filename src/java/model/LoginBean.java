@@ -27,9 +27,7 @@ import utility.EncryptPass;
 @SessionScoped
 public class LoginBean {
 
-
     private String username;
-
     private String usernamemessage;
     private String fullname;
     private String firstname;
@@ -45,6 +43,7 @@ public class LoginBean {
     private int actScore;
     private int satScore;
     private Feed userFeed;
+    private String postContent;
     private String usernamestyle;
     private int loginAttempts = 0;
     private String errorResponse = "";
@@ -86,6 +85,19 @@ public class LoginBean {
                 return "landing.xhtml";
             }
 
+        }
+
+    }
+
+    public String addPost() {
+
+        if (FeedDAO.addPostToDB(username, postContent) != 1) {
+            errorResponse = "There was a problem creating your post. Please try again later.";
+            return "landing.xhtml";
+        } else {
+            userFeed.addToList(postContent);
+            postContent = "";
+            return "landing.xhtml";
         }
 
     }
@@ -351,6 +363,14 @@ public class LoginBean {
 
     public void setUsernamestyle(String usernamestyle) {
         this.usernamestyle = usernamestyle;
+    }
+
+    public String getPostContent() {
+        return postContent;
+    }
+
+    public void setPostContent(String postContent) {
+        this.postContent = postContent;
     }
 
 }
