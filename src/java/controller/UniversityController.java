@@ -3,10 +3,16 @@ package controller;
 import dao.UniversityDAO;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import model.University;
 
 @ManagedBean
+@SessionScoped
 public class UniversityController {
+    
+    @Inject
+    UniversityDAO universityDAO;
 
     private String universityInput;
     private ArrayList<University> featured;
@@ -21,13 +27,15 @@ public class UniversityController {
     }
 
     public String showUniversity() {
-        UniversityDAO dao = new UniversityDAO();
-        university = dao.getUniversityByName(universityInput);
+        university = universityDAO.getUniversityByName(universityInput);
+        if(university == null) {
+            return "landing.xhtml";
+        }
         return "university.xhtml";
     }
 
     public ArrayList<University> getFeaturedUniversities() {
-        featured = UniversityDAO.getFeaturedUniversities();
+        featured = universityDAO.getFeaturedUniversities();
         return featured;
     }
 

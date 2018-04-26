@@ -5,6 +5,9 @@ public class University {
     private String description;
     private boolean featured;
     
+    public University() {
+    }
+    
     public University(String name, String description) {
         this.name = name;
         this.description = description;

@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,8 +10,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 
-public class FeedDAO {
+@Named
+@SessionScoped
+public class FeedDAO implements Serializable{
 
     public List<String> getFeedsByUsername(String username) {
         List<String> posts = new ArrayList<>();
