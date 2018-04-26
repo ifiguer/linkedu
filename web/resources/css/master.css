@@ -83,6 +83,12 @@ body {
     border-radius: 100%;
     background: lightslategray;
 }
+.profile-div{
+     margin: auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+}
 
 .new-post, .post {
     padding: 10px 1rem;

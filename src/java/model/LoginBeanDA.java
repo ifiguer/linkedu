@@ -39,7 +39,7 @@ public class LoginBeanDA {
                 lb.setLastname(rs.getString("lastname"));
                 lb.setActScore(rs.getInt("act"));
                 lb.setProfileURL(rs.getString("profileurl"));
-
+                lb.setSatScore(rs.getInt("sat"));
             }
             DBConn.close();
             return lb;
@@ -100,6 +100,7 @@ public class LoginBeanDA {
                     + "', '" + cust.getEmail()
                     + "', 'img/egg.jpg"
                     + "', " + cust.getActScore()
+                    + ", " + cust.getSatScore() 
                     + ")";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
@@ -160,7 +161,6 @@ public class LoginBeanDA {
             insertString += (cust.getEmail().equals("") ? "" : "email='" + cust.getEmail() + "',");
             insertString += (cust.getFirstname().equals("") ? "" : "firstname='" + cust.getFirstname() + "',");
             insertString += (cust.getLastname().equals("") ? "" : "lastname='" + cust.getLastname() + "',");
-            //insertString += " userid = '" + cust.getUsername() + "' ";
             insertString += " where userid='" + cust.getUsername() + "'";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);

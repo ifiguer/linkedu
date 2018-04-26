@@ -91,6 +91,7 @@ public class LoginBean {
                 return "signUp.xhtml";
             } else {
                 sendMail();
+                setProfileURL("img/egg.jpg");
                 loginSuccess = true;
                 return "landing.xhtml";
             }
@@ -176,6 +177,7 @@ public class LoginBean {
         setLastname(temp.getLastname());
         setActScore(temp.getActScore());
         setProfileURL(temp.getProfileURL());
+        setSatScore(temp.getSatScore());
         loginSuccess = true;
 
         return true;

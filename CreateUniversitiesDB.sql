@@ -2,7 +2,7 @@ drop table Project353.Universities;
 
 create table Project353.Universities(
 
-NAME    VARCHAR(25),
+NAME    VARCHAR(100),
 DESCRIPTION    VARCHAR(256),
 FEATURED		BOOLEAN
 

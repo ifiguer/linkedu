@@ -63,12 +63,12 @@ public class UniversityDAO implements Serializable {
             // Note the use of a diff class, called PreparedStatement
             PreparedStatement pstmt = connection.prepareStatement(queryString);
             ResultSet rs = pstmt.executeQuery();
-
-            if (rs.next()) {
+            while(rs.next()){
                 String n = rs.getString("name");
                 String description = rs.getString("description");
                 featured.add(new University(n, description));
             }
+           
         } catch (SQLException exception) {
             System.out.println("SQL ERROR: " + exception.getMessage());
         }

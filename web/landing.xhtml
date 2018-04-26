@@ -8,7 +8,7 @@
     <ui:define name="content">
         <div class="landing">
             <div class="profile">
-                <div class="profile-pic"><h:graphicImage name="#{LoginBean.profileURL}"/></div>
+                <div class="profile-div"><h:graphicImage class="profile-pic" name="#{LoginBean.profileURL}"/></div>
                 <h:form>
                     <p><h:outputText value="#{LoginBean.fullname}"></h:outputText></p>
                     <p>ACT: <h:outputText value="#{LoginBean.actScore}"></h:outputText></p>
@@ -37,7 +37,7 @@
                 <p>Featured University</p>
                 <div class="featured-university">
                      <c:forEach items="#{universityController.featuredUniversities}" var="university">
-                        <span class="">#{university.name}</span>
+                         <span class="">#{university.name}</span>
                     </c:forEach>
                 </div>
             </div>

@@ -10,6 +10,8 @@
             <h:form class="signup-form">
                 <label for="act">ACT Score</label>
                 <h:inputText value="#{LoginBean.actScore}" id="act"></h:inputText>
+                <label for="sat">SAT Score</label>
+                <h:inputText value="#{LoginBean.satScore}" id="sat"></h:inputText>
                 <h:commandButton value="Sign Up" action="#{LoginBean.persist()}" />
             </h:form>
             <br/><h:outputText style="color:red" value="#{LoginBean.errorResponse}"></h:outputText>
