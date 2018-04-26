@@ -6809,7 +6809,7 @@ INSERT INTO Project353.Universities (name,description,featured) VALUES ('Univers
 INSERT INTO Project353.Universities (name,description,featured) VALUES ('University of Idaho',' ',false);
 INSERT INTO Project353.Universities (name,description,featured) VALUES ('University of Illinois at Chicago',' ',false);
 INSERT INTO Project353.Universities (name,description,featured) VALUES ('University of Illinois at Springfield',' ',false);
-INSERT INTO Project353.Universities (name,description,featured) VALUES ('University of Illinois at Urbana-Champaign',' ',false);
+INSERT INTO Project353.Universities (name,description,featured) VALUES ('University of Illinois at Urbana-Champaign',' ',TRUE);
 INSERT INTO Project353.Universities (name,description,featured) VALUES ('University of Illinois University Administration',' ',false);
 INSERT INTO Project353.Universities (name,description,featured) VALUES ('University of Indianapolis',' ',false);
 INSERT INTO Project353.Universities (name,description,featured) VALUES ('University of Iowa',' ',false);

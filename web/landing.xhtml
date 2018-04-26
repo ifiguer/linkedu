@@ -12,6 +12,7 @@
                 <h:form>
                     <p><h:outputText value="#{LoginBean.fullname}"></h:outputText></p>
                     <p>ACT: <h:outputText value="#{LoginBean.actScore}"></h:outputText></p>
+                    <p>SAT: <h:outputText value="#{LoginBean.satScore}"></h:outputText></p>
                     <h:commandButton class="full-width" value="Update profile" action="update.xhtml"></h:commandButton>
                 </h:form>
             </div>
@@ -35,9 +36,9 @@
                     </h:form>
                 </div>
                 <p>Featured University</p>
-                <div class="featured-university">
+                <div>
                      <c:forEach items="#{universityController.featuredUniversities}" var="university">
-                         <div class="">#{university.name}</div>
+                         <div class="featured-university">#{university.name}</div>
                     </c:forEach>
                 </div>
             </div>
