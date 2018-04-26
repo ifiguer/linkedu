@@ -12,8 +12,8 @@ import java.io.OutputStream;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import model.LoginBean;
 import model.LoginBeanDA;
@@ -23,8 +23,13 @@ import org.primefaces.event.FileUploadEvent;
 @ManagedBean(name = "fileUploadController")
 public class FileUploadController {
 
-    @Inject
+    @ManagedProperty(value="#{LoginBean}")
     private LoginBean temp;
+
+    public void setTemp(LoginBean temp) {
+        this.temp = temp;
+    }
+    
     private static final String UPLOAD_DIR = "resources\\uploads";
 
     private String destination = ".\\";
