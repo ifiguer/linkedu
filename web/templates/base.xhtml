@@ -8,7 +8,7 @@
 
     <h:head>
         <title>
-            Base
+            LinkedU
         </title> 
         <h:outputStylesheet library="css" name="master.css" />       
     </h:head>
@@ -23,8 +23,12 @@
             <span class="navigation-links">
                 <h:form>
                     <c:if test="#{LoginBean.loginSuccess eq false}">
-                        <h:commandLink value="Login" action="login" />
+                        <h:commandLink value="Log in" action="login" />
                         <h:commandLink value="Sign Up" action="signUp" />
+                    </c:if>
+                    <c:if test="#{LoginBean.loginSuccess eq true}">
+                        <h:commandLink value="Profile" action="landing.xhtml"/>
+                        <h:commandLink value="Sign out" action="#{LoginBean.logOut()}"/>
                     </c:if>
                 </h:form>
             </span>

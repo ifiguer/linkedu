@@ -81,6 +81,11 @@ public class LoginBean {
         }
 
     }
+    
+    public String logOut() {
+        loginSuccess = false;
+        return "index.xhtml";
+    }
 
     public String persist() {
         if (!validateSignUpForm()) {
