@@ -14,12 +14,12 @@
                     <h:inputText value="#{LoginBean.username}" id="username" required="true" disabled="true"></h:inputText>
 
                     <label for="password">Password</label>
-                    <h:inputSecret value="#{LoginBean.password}" id="password" required="true">
-                        <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})"/>
+                    <h:inputSecret value="#{LoginBean.password}" id="password" required="false">
+                        <!--<f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})"/>-->
                     </h:inputSecret>
 
                     <label for="confirm-password">Confirm password</label>
-                    <h:inputSecret id="confirm-password" required="true"></h:inputSecret>
+                    <h:inputSecret value="#{LoginBean.confirmPassword}" id="confirm-password" required="false"></h:inputSecret>
 
                     <label for="first-name">First name</label>
                     <h:inputText value="#{LoginBean.firstname}" id="first-name" required="true">
@@ -33,12 +33,6 @@
 
                     <label for="email">Email</label>
                     <h:inputText value="#{LoginBean.email}" id="email" required="true"></h:inputText>
-
-                    <label for="security-question">Security question</label>
-                    <h:inputText value="#{LoginBean.secQuestion}" id="security-question" required="true"></h:inputText>
-
-                    <label for="security-answer">Security answer</label>
-                    <h:inputText value="#{LoginBean.secAnswer}" id="security-answer" required="true"></h:inputText>
 
                     <h:commandButton value="Update" action="#{LoginBean.update()}"/>
                 </h:form>

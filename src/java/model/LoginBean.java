@@ -66,7 +66,7 @@ public class LoginBean {
             errorResponse = "An error has occurred while updating your profile. Please check input and try again";
             return "update.xhtml";
         }
-        return "echo.xhtml";
+        return "landing.xhtml";
     }
 
     public String login() {

@@ -131,8 +131,6 @@ public class LoginBeanDA {
             insertString += (cust.getEmail().equals("") ? "" : "email='" + cust.getEmail() + "',");
             insertString += (cust.getFirstname().equals("") ? "" : "firstname='" + cust.getFirstname() + "',");
             insertString += (cust.getLastname().equals("") ? "" : "lastname='" + cust.getLastname() + "',");
-            insertString += (cust.getSecQuestion().equals("") ? "" : "secquestion='" + cust.getSecQuestion() + "',");
-            insertString += (cust.getSecAnswer().equals("") ? "" : "secanswer='" + cust.getSecAnswer() + "'");
             //insertString += " userid = '" + cust.getUsername() + "' ";
             insertString += " where userid='" + cust.getUsername() + "'";
             rowCount = stmt.executeUpdate(insertString);
