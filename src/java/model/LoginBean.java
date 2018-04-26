@@ -38,6 +38,7 @@ public class LoginBean {
     private String universityOfChoice;
     private String majorOfChoice;
     private String[] interests;
+    private String profileURL;
     private int actScore;
     private int satScore;
     private String postContent;
@@ -174,6 +175,7 @@ public class LoginBean {
         setFirstname(temp.getFirstname());
         setLastname(temp.getLastname());
         setActScore(temp.getActScore());
+        setProfileURL(temp.getProfileURL());
         loginSuccess = true;
 
         return true;
@@ -213,6 +215,14 @@ public class LoginBean {
             return false;
         }
         return true;
+    }
+
+    public String getProfileURL() {
+        return profileURL;
+    }
+
+    public void setProfileURL(String profileURL) {
+        this.profileURL = profileURL;
     }
 
     public String getUniversityOfChoice() {
