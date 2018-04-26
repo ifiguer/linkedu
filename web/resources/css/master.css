@@ -17,6 +17,11 @@ body {
     font-size: 3rem;
 }
 
+.navigation .title a {
+    color: white;
+    text-decoration: none;
+}
+
 .navigation {
     padding: 15px;
     display: flex;
