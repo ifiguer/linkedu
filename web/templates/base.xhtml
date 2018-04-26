@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>
@@ -21,8 +22,10 @@
             </span>
             <span class="navigation-links">
                 <h:form>
-                    <h:commandLink value="Login" action="login" />
-                    <h:commandLink value="Sign Up" action="signUp" />
+                    <c:if test="#{LoginBean.loginSuccess eq false}">
+                        <h:commandLink value="Login" action="login" />
+                        <h:commandLink value="Sign Up" action="signUp" />
+                    </c:if>
                 </h:form>
             </span>
         </div>
