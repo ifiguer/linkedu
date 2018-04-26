@@ -2,14 +2,17 @@ drop table Project353.Users;
 
 create table Project353.Users(
 
-USERID    VARCHAR(25),
+USERID    	VARCHAR(25),
 PASSWORD    VARCHAR(64),
 FIRSTNAME   VARCHAR(25),
 LASTNAME    VARCHAR(25),
 EMAIL       VARCHAR(25),
-ACT   INTEGER
+PROFILEURL	varchar(50),
+MAJOR		VARCHAR(25),
+UNIVERSITY	VARCHAR(25),
+
+ACT   		INTEGER,
+SAT			INTEGER	
 
 
 );
-
-insert into Project353.Users values('testerman95','testpw','Joey','Test','test@test.com','What is your occupation','tester');

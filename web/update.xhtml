@@ -3,12 +3,13 @@
                 template="/templates/base.xhtml"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content"> 
         <div class="container">
             <c:if test="${LoginBean.loginSuccess=='true'}">
-            <h1 class="title text-center">Update</h1>
+                <h1 class="title text-center">Update</h1>
                 <h:form class="signup-form">
                     <label for="username">Username</label>
                     <h:inputText value="#{LoginBean.username}" id="username" required="true" disabled="true"></h:inputText>
@@ -23,12 +24,12 @@
 
                     <label for="first-name">First name</label>
                     <h:inputText value="#{LoginBean.firstname}" id="first-name" required="true">
-                        
+
                     </h:inputText>
 
                     <label for="last-name">Last name</label>
                     <h:inputText value="#{LoginBean.lastname}" id="last-name" required="true">
-                        
+
                     </h:inputText>
 
                     <label for="email">Email</label>
@@ -36,12 +37,19 @@
 
                     <h:commandButton value="Update" action="#{LoginBean.update()}"/>
                 </h:form>
+
+                <h:form id="form" >
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <h1 class="title">Upload Profile Picture</h1>
+                    <p:fileUpload update="growl" fileUploadListener="#{fileUploadController.upload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="1000000"/>
+                   <!-- 2. Refresh to see the image uploaded (assuming it is 'CrawlingSnakes.gif', initially not found) : <h:graphicImage value="#{resource['images:CrawlingSnakes.gif']}"/> -->
+                </h:form>
                 <h:outputText value="#{LoginBean.errorResponse}"></h:outputText>
             </c:if>
             <c:if test="${LoginBean.loginSuccess=='false'}">         
-                <script>window.location= "#{LoginBean.redirectLogin()}"</script>
+                <script>window.location = "#{LoginBean.redirectLogin()}"</script>
             </c:if>
-            
+
         </div>
     </ui:define>
 </ui:composition>
