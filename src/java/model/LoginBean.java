@@ -37,6 +37,8 @@ public class LoginBean {
     private String secAnswer;
     private String universityOfChoice;
     private String majorOfChoice;
+    private String gradDetails;
+    private String highSchoolDetails;
     private String[] interests;
     private String profileURL;
     private int actScore;
@@ -394,6 +396,22 @@ public class LoginBean {
 
     public void setPostContent(String postContent) {
         this.postContent = postContent;
+    }
+
+    public String getGradDetails() {
+        return gradDetails;
+    }
+
+    public void setGradDetails(String gradDetails) {
+        this.gradDetails = gradDetails;
+    }
+
+    public String getHighSchoolDetails() {
+        return highSchoolDetails;
+    }
+
+    public void setHighSchoolDetails(String highSchoolDetails) {
+        this.highSchoolDetails = highSchoolDetails;
     }
 
 }

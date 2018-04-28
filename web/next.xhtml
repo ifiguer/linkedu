@@ -12,6 +12,10 @@
                 <h:inputText value="#{LoginBean.actScore}" id="act"></h:inputText>
                 <label for="sat">SAT Score</label>
                 <h:inputText value="#{LoginBean.satScore}" id="sat"></h:inputText>
+                <label for="sat">High School</label>
+                <h:inputText value="#{LoginBean.highSchoolDetails}" id="hsdetails"></h:inputText>
+                <label for="sat">When will you graduate high school?</label>
+                <h:inputText value="#{LoginBean.gradDetails}" id="graddetails"></h:inputText>
                 <h:commandButton value="Sign Up" action="#{LoginBean.persist()}" />
             </h:form>
             <br/><h:outputText style="color:red" value="#{LoginBean.errorResponse}"></h:outputText>

@@ -99,6 +99,8 @@ public class LoginBeanDA {
                     + "', '" + cust.getLastname()
                     + "', '" + cust.getEmail()
                     + "', 'img/egg.jpg"
+                    + "', '" + cust.getGradDetails()
+                    + "', '" + cust.getHighSchoolDetails()
                     + "', " + cust.getActScore()
                     + ", " + cust.getSatScore() 
                     + ")";

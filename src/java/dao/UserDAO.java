@@ -22,8 +22,8 @@ public class UserDAO {
      private static final String DB_URL = "jdbc:derby://localhost:1527/Project353";
     private static final String USERNAME = "itkstu";
     private static final String PASSWORD = "student";
-    private static final String QUERY_BY_NAME = "SELECT firstname,profileURL,gradDetails,highSchoolName "
-            + "FROM Project353.Users WHERE Upper(firstname || ' ' || lastname) LIKE Upper(%?%) OR UPPER(firstname) LIKE upper(%?%) OR UPPER(lastname) LIKE UPPER(%?%)";
+    private static final String QUERY_BY_NAME = "SELECT firstname,lastname,profileURL,gradDetails,highSchooldetails "
+            + "FROM Project353.Users WHERE Upper(firstname || ' ' || lastname) LIKE Upper('%'||?||'%') OR UPPER(firstname) LIKE upper('%'||?||'%') OR UPPER(lastname) LIKE UPPER('%'||?||'%')";
     public ArrayList<User> checkDBForStudents(String entry){
         ArrayList<User> userList = new ArrayList();
         User user;
@@ -37,14 +37,16 @@ public class UserDAO {
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
             PreparedStatement query = connection.prepareStatement(QUERY_BY_NAME);
             query.setString(1, entry);
+            query.setString(2, entry);
+            query.setString(3, entry);
 
             ResultSet resultSet = query.executeQuery();
 
             while (resultSet.next()) {
-                String n = resultSet.getString("name");
+                String n = resultSet.getString("firstname")+" "+resultSet.getString("lastname");
                 String url = resultSet.getString("profileURL");
                 String gradDetails = resultSet.getString("gradDetails");
-                String highSchoolName = resultSet.getString("highSchoolName");
+                String highSchoolName = resultSet.getString("highschooldetails");
                 user = new User(n,url, gradDetails,highSchoolName);
                 userList.add(user);
             }
