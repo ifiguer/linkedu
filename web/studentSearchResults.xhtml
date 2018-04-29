@@ -16,8 +16,8 @@ and open the template in the editor.
             <p>Search Results</p>
             <div>
                 <c:forEach items="#{userController.searchStudentResults}" var="students">
-                    <div>
-                        <div class="profile-div"><h:graphicImage class="profile-pic" name="#{students.profileURL}"/></div>
+                    <div class="student-search-result">
+                        <h:graphicImage class="profile-pic" name="#{students.profileURL}"/>
                         <p>#{students.name}</p>
                         <p>#{students.highSchoolName}</p>
                         <p>#{students.gradDetails}</p>
