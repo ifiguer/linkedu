@@ -16,21 +16,19 @@
     <h:body>
         <div class="navigation">
             <span class="title">
-                <h:form>
-                    <h:commandLink value="LinkedU" action="welcome"/>
-                </h:form>
+                <h:link value="LinkedU" outcome="welcome"/>
             </span>
             <span class="navigation-links">
-                <h:form>
-                    <c:if test="#{LoginBean.loginSuccess eq false}">
-                        <h:commandLink value="Log in" action="login" />
-                        <h:commandLink value="Sign Up" action="signUp" />
-                    </c:if>
-                    <c:if test="#{LoginBean.loginSuccess eq true}">
-                        <h:commandLink value="Profile" action="profile"/>
+                <c:if test="#{LoginBean.loginSuccess eq false}">
+                    <h:link value="Log in" outcome="login" />
+                    <h:link value="Sign Up" outcome="signUp" />
+                </c:if>
+                <c:if test="#{LoginBean.loginSuccess eq true}">
+                    <h:form>
+                        <h:link value="Profile" outcome="profile"/>
                         <h:commandLink value="Sign out" action="#{LoginBean.logOut()}"/>
-                    </c:if>
-                </h:form>
+                    </h:form>
+                </c:if>
             </span>
         </div>
         <ui:insert name="content" />

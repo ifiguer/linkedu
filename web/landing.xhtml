@@ -9,12 +9,10 @@
         <div class="landing">
             <div class="profile">
                 <div class="profile-div"><h:graphicImage class="profile-pic" name="#{LoginBean.profileURL}"/></div>
-                <h:form>
-                    <p><h:outputText value="#{LoginBean.fullname}"></h:outputText></p>
-                    <p>ACT: <h:outputText value="#{LoginBean.actScore}"></h:outputText></p>
-                    <p>SAT: <h:outputText value="#{LoginBean.satScore}"></h:outputText></p>
-                    <h:commandButton class="full-width" value="Update profile" action="update"></h:commandButton>
-                </h:form>
+                <p><h:outputText value="#{LoginBean.fullname}"></h:outputText></p>
+                <p>ACT: <h:outputText value="#{LoginBean.actScore}"></h:outputText></p>
+                <p>SAT: <h:outputText value="#{LoginBean.satScore}"></h:outputText></p>
+                <h:button class="full-width" value="Update profile" outcome="update"></h:button>
             </div>
             <div class="feed">
                 <div class="new-post">
@@ -38,12 +36,12 @@
                         <h:inputText value="#{userController.studentSearch}" a:placeholder="Find a fellow student"></h:inputText>
                         <h:commandButton value="Search" action="#{userController.searchForStudents()}"></h:commandButton>
                     </h:form>
-                    
+
                 </div>
                 <p>Featured University</p>
                 <div>
-                     <c:forEach items="#{universityController.featuredUniversities}" var="university">
-                         <div class="featured-university">#{university.name}</div>
+                    <c:forEach items="#{universityController.featuredUniversities}" var="university">
+                        <div class="featured-university">#{university.name}</div>
                     </c:forEach>
                 </div>
             </div>
