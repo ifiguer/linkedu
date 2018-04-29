@@ -4,6 +4,8 @@ import controller.AuthenticationBean;
 import dao.FeedDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import javax.faces.bean.ManagedBean;
@@ -33,7 +35,7 @@ public class LoginBean implements Serializable {
     @Inject
     private FeedDAO feedDAO;
 
-    private List<String> posts;
+    private List<Post> posts;
 
     private String username;
     private String usernamemessage;
@@ -45,6 +47,7 @@ public class LoginBean implements Serializable {
     private String email;
     private String secQuestion;
     private String secAnswer;
+    private String following;
     private String universityOfChoice;
     private String majorOfChoice;
     private String gradDetails;
@@ -58,16 +61,16 @@ public class LoginBean implements Serializable {
     private int loginAttempts = 0;
     private String errorResponse = "";
     private boolean loginSuccess = false;
-
+    
     public LoginBean() {
         posts = new ArrayList<>();
     }
 
-    public List<String> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<String> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
 
@@ -118,14 +121,19 @@ public class LoginBean implements Serializable {
         }
 
     }
-
+  
     public String addPost() {
 
         if (feedDAO.addPostToDB(username, postContent) != 1) {
             errorResponse = "There was a problem creating your post. Please try again later.";
             return "profile";
         } else {
-            posts.add(postContent);
+            
+            Date now = new Date();
+            
+            Post temp = new Post(username,postContent,now.getTime());
+            posts.add(temp);
+            Collections.sort(posts);
             postContent = "";
             return "profile";
         }
@@ -197,6 +205,7 @@ public class LoginBean implements Serializable {
         setActScore(temp.getActScore());
         setProfileURL(temp.getProfileURL());
         setSatScore(temp.getSatScore());
+        setFollowing(temp.getFollowing());
         loginSuccess = true;
 
         return true;
@@ -426,4 +435,14 @@ public class LoginBean implements Serializable {
         this.highSchoolDetails = highSchoolDetails;
     }
 
+    public String getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(String following) {
+        this.following = following;
+    }
+
+ 
+    
 }

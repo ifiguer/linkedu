@@ -23,7 +23,7 @@
                     </h:form>
                 </div>
                 <c:forEach items="#{LoginBean.posts}" var="post">
-                    <span class="post">#{post}</span>
+                    <span class="post">#{post.content}</span>
                 </c:forEach>
             </div>
             <div class="ads">

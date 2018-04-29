@@ -10,10 +10,15 @@ and open the template in the editor.
                 template="/templates/base.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html" 
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="content">
         <div class="container">
             <p>Search Results</p>
+            <h:form>
+                <h:inputText value="#{userController.studentFollowID}"></h:inputText>
+                <h:commandButton action="#{userController.followUser()}"></h:commandButton>
+            </h:form>
             <div>
                 <c:forEach items="#{userController.searchStudentResults}" var="students">
                     <div>
@@ -21,6 +26,11 @@ and open the template in the editor.
                         <p>#{students.name}</p>
                         <p>#{students.highSchoolName}</p>
                         <p>#{students.gradDetails}</p>
+                        <h:commandButton action="#{userController.followUser()}" value="follow">
+                            
+                            <f:param name="id" value="#{students.userID}"/>
+                                     
+                        </h:commandButton>
                     </div>
                 </c:forEach>
             </div>
