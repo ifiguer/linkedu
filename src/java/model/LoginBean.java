@@ -65,19 +65,19 @@ public class LoginBean implements Serializable {
     public String update() {
         if (!password.equals(confirmPassword)) {
             errorResponse = "Passwords do not match";
-            return "update.xhtml";
+            return "update";
         } else if (LoginBeanDA.updateCustomerToDB(this) != 1) {
             errorResponse = "An error has occurred while updating your profile. Please check input and try again";
-            return "update.xhtml";
+            return "update";
         }
-        return "landing.xhtml";
+        return "profile";
     }
 
     public String login() {
         if (validateLogin()) {
             loginSuccess = true;
 
-            return "landing.xhtml";
+            return "profile";
         } else {
             loginSuccess = false;
             return "LoginBad.xhtml";
@@ -87,21 +87,21 @@ public class LoginBean implements Serializable {
     
     public String logOut() {
         loginSuccess = false;
-        return "index.xhtml";
+        return "welcome";
     }
 
     public String persist() {
         if (!validateSignUpForm()) {
-            return "signUp.xhtml";
+            return "signUp";
         } else {
             if (LoginBeanDA.storeCustomerToDB(this) != 1) {
                 errorResponse = "There was a problem creating your account. Please try again later.";
-                return "signUp.xhtml";
+                return "signUp";
             } else {
                 sendMail();
                 setProfileURL("img/egg.jpg");
                 loginSuccess = true;
-                return "landing.xhtml";
+                return "profile";
             }
 
         }
@@ -112,11 +112,11 @@ public class LoginBean implements Serializable {
         
         if (feedDAO.addPostToDB(username, postContent) != 1) {
             errorResponse = "There was a problem creating your post. Please try again later.";
-            return "landing.xhtml";
+            return "profile";
         } else {
             posts.add(postContent);
             postContent = "";
-            return "landing.xhtml";
+            return "profile";
         }
 
     }

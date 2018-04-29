@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>logIn</from-outcome>
+            <to-view-id>login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>signUp</from-outcome>
+            <to-view-id>signUp.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>additionalInfo</from-outcome>
+            <to-view-id>next.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>update</from-outcome>
+            <to-view-id>update.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>profile</from-outcome>
+            <to-view-id>landing.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>university</from-outcome>
+            <to-view-id>university.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>studentSearchResults</from-outcome>
+            <to-view-id>studentSearchResults.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

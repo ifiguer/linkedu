@@ -30,9 +30,9 @@ public class UniversityController implements Serializable {
     public String showUniversity() {
         university = universityDAO.getUniversityByName(universityInput);
         if(university == null) {
-            return "landing.xhtml";
+            return "profile";
         }
-        return "university.xhtml";
+        return "university";
     }
 
     public ArrayList<University> getFeaturedUniversities() {

@@ -17,7 +17,7 @@
         <div class="navigation">
             <span class="title">
                 <h:form>
-                    <h:commandLink value="LinkedU" action="index.xhtml"/>
+                    <h:commandLink value="LinkedU" action="welcome"/>
                 </h:form>
             </span>
             <span class="navigation-links">
@@ -27,7 +27,7 @@
                         <h:commandLink value="Sign Up" action="signUp" />
                     </c:if>
                     <c:if test="#{LoginBean.loginSuccess eq true}">
-                        <h:commandLink value="Profile" action="landing.xhtml"/>
+                        <h:commandLink value="Profile" action="profile"/>
                         <h:commandLink value="Sign out" action="#{LoginBean.logOut()}"/>
                     </c:if>
                 </h:form>

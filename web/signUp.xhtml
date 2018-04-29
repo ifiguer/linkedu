@@ -27,7 +27,7 @@
                 <h:inputText value="#{LoginBean.lastname}" id="last-name" required="true"></h:inputText>
                 <label for="email">Email</label>
                 <h:inputText value="#{LoginBean.email}" id="email" required="true"></h:inputText>
-                <h:commandButton value="Next" action="next.xhtml" />
+                <h:commandButton value="Next" action="additionalInfo" />
 
             </h:form>
             <br/><h:outputText style="color:red" value="#{LoginBean.errorResponse}"></h:outputText>

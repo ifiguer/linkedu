@@ -27,10 +27,10 @@ public class UserController implements Serializable {
     
     public String searchForStudents(){
         if((searchStudentResults = userDAO.checkDBForStudents(studentSearch))==null){
-            return "landing.xhtml";
+            return "welcome";
         }
         else{
-            return "studentSearchResults.xhtml";
+            return "studentSearchResults";
         }
         
     }
