@@ -1,11 +1,13 @@
 package model;
 
+import controller.AuthenticationBean;
 import dao.FeedDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.mail.Message;
@@ -20,10 +22,17 @@ import utility.EncryptPass;
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 public class LoginBean implements Serializable {
-    
+
+    @ManagedProperty(value = "#{authenticationBean}")
+    private AuthenticationBean authenticationBean;
+
+    public void setAuthenticationBean(AuthenticationBean authenticationBean) {
+        this.authenticationBean = authenticationBean;
+    }
+
     @Inject
     private FeedDAO feedDAO;
-    
+
     private List<String> posts;
 
     private String username;
@@ -49,7 +58,7 @@ public class LoginBean implements Serializable {
     private int loginAttempts = 0;
     private String errorResponse = "";
     private boolean loginSuccess = false;
-    
+
     public LoginBean() {
         posts = new ArrayList<>();
     }
@@ -61,7 +70,7 @@ public class LoginBean implements Serializable {
     public void setPosts(List<String> posts) {
         this.posts = posts;
     }
-    
+
     public String update() {
         if (!password.equals(confirmPassword)) {
             errorResponse = "Passwords do not match";
@@ -76,7 +85,8 @@ public class LoginBean implements Serializable {
     public String login() {
         if (validateLogin()) {
             loginSuccess = true;
-
+            authenticationBean.setName(username);
+            authenticationBean.login();
             return "profile";
         } else {
             loginSuccess = false;
@@ -84,9 +94,10 @@ public class LoginBean implements Serializable {
         }
 
     }
-    
+
     public String logOut() {
         loginSuccess = false;
+        authenticationBean.logout();
         return "welcome";
     }
 
@@ -109,7 +120,7 @@ public class LoginBean implements Serializable {
     }
 
     public String addPost() {
-        
+
         if (feedDAO.addPostToDB(username, postContent) != 1) {
             errorResponse = "There was a problem creating your post. Please try again later.";
             return "profile";
