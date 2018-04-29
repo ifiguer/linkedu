@@ -5,15 +5,16 @@ public class User {
     private String profileURL;
     private String highSchoolName;
     private String gradDetails;
-
+    private String userID;
     public User() {
     }
 
-    public User(String name, String profileURL, String highSchoolName, String gradDetails) {
+    public User(String name, String profileURL,String userID, String highSchoolName, String gradDetails) {
         this.name = name;
         this.profileURL = profileURL;
         this.highSchoolName = highSchoolName;
         this.gradDetails = gradDetails;
+        this.userID = userID;
     }
     
     public String getName() {
@@ -46,6 +47,14 @@ public class User {
 
     public void setGradDetails(String gradDetails) {
         this.gradDetails = gradDetails;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
     
     

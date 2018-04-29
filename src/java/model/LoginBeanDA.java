@@ -7,9 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.faces.bean.ManagedProperty;
 
 public class LoginBeanDA implements Serializable {
-
+    
     public static LoginBean validInfo(String username, String password) {
         LoginBean lb = null;
         try {
@@ -41,6 +42,7 @@ public class LoginBeanDA implements Serializable {
                 lb.setActScore(rs.getInt("act"));
                 lb.setProfileURL(rs.getString("profileurl"));
                 lb.setSatScore(rs.getInt("sat"));
+                lb.setFollowing(rs.getString("following"));
             }
             DBConn.close();
             return lb;
@@ -100,6 +102,7 @@ public class LoginBeanDA implements Serializable {
                     + "', '" + cust.getLastname()
                     + "', '" + cust.getEmail()
                     + "', 'img/egg.jpg"
+                    + "', '"
                     + "', '" + cust.getGradDetails()
                     + "', '" + cust.getHighSchoolDetails()
                     + "', " + cust.getActScore()
@@ -175,4 +178,6 @@ public class LoginBeanDA implements Serializable {
         return rowCount;
 
     }
+    
+    
 }
