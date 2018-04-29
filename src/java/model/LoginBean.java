@@ -131,7 +131,7 @@ public class LoginBean implements Serializable {
             
             Date now = new Date();
             
-            Post temp = new Post(username,postContent,now.getTime());
+            Post temp = new Post(username,postContent,profileURL,now.getTime());
             posts.add(temp);
             Collections.sort(posts);
             postContent = "";

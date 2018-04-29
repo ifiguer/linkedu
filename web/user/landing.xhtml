@@ -24,6 +24,7 @@
                 </div>
                 <c:forEach items="#{LoginBean.posts}" var="post">
                     <span class="post">#{post.content}</span>
+                    <h:graphicImage class="profile-pic" name="#{post.profileURL}"/>
                 </c:forEach>
             </div>
             <div class="ads">

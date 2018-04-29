@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedProperty;
+import javax.inject.Inject;
 import model.LoginBean;
 import model.University;
 import model.User;
@@ -32,7 +33,8 @@ public class UserDAO implements Serializable {
     private static final String DELIMITER = ":";
 //    @ManagedProperty(value = "#{param.id}")
 //    private String followID;
-
+@Inject
+FeedDAO feedDAO;
     public ArrayList<User> checkDBForStudents(String entry) {
         ArrayList<User> userList = new ArrayList();
         User user;
@@ -89,6 +91,7 @@ public class UserDAO implements Serializable {
             insertString += " where userid='" + cust.getUsername() + "'";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
+            cust.setPosts(feedDAO.getFeedsByUsername(cust.getUsername()));
             DBConn.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

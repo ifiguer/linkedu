@@ -34,7 +34,7 @@ public class FeedDAO implements Serializable {
             Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
 
             // Select all of the user's posts
-            String queryString = "select * from Project353.Posts join Project353.Users on Project353.Users.userid = Project353.Posts.userid where Project353.Users.userid like '" + username + "' order by Project353.Posts.datePosted desc";
+            String queryString = "select Project353.Posts.content,Project353.Posts.userid,Project353.Posts.datePosted,Project353.users.profileURL from Project353.Posts join Project353.Users on Project353.Users.userid = Project353.Posts.userid where Project353.Users.userid like '" + username + "'";
             PreparedStatement pstmt = DBConn.prepareStatement(queryString);
             ResultSet rs = pstmt.executeQuery();
             //Put them in a list if there are any
@@ -42,7 +42,8 @@ public class FeedDAO implements Serializable {
                 String content = rs.getString("content");
                 String userID = rs.getString("userID");
                 long datePosted = rs.getLong("datePosted");
-                Post temp = new Post(userID, content, datePosted);
+                String profileURL = rs.getString("profileurl");
+                Post temp = new Post(userID, content, profileURL, datePosted);
                 posts.add(temp);
             }
             //Get the list of users the current user is following
@@ -53,21 +54,22 @@ public class FeedDAO implements Serializable {
                 following = rs.getString("following");
                 String[] followIDs = following.split(":");
                 for (String a : followIDs) {
-                    queryString = "select * from Project353.Posts join Project353.Users on Project353.Users.userid = Project353.Posts.userid where Project353.Users.userid like '" + a + "' order by Project353.Posts.datePosted desc";
+                    queryString = "select Project353.Posts.content,Project353.Posts.userid,Project353.Posts.datePosted,Project353.users.profileURL from Project353.Posts join Project353.Users on Project353.Users.userid = Project353.Posts.userid where Project353.Users.userid like '" + a + "'";
                     pstmt = DBConn.prepareStatement(queryString);
                     rs = pstmt.executeQuery();
                     while (rs.next()) {
                         String content = rs.getString("content");
                         String userID = rs.getString("userID");
                         long datePosted = rs.getLong("datePosted");
-                        Post temp = new Post(userID, content, datePosted);
+                        String profileURL = rs.getString("profileurl");
+                        Post temp = new Post(userID, content, profileURL, datePosted);
                         posts.add(temp);
                     }
                 }
             }
-            
+
             Collections.sort(posts);
-            
+
             DBConn.close();
             return posts;
 
@@ -94,7 +96,6 @@ public class FeedDAO implements Serializable {
             String insertString;
             Statement stmt = DBConn.createStatement();
             Date temp = new Date();
-
 
             insertString = "INSERT INTO Project353.Posts VALUES ('"
                     + username

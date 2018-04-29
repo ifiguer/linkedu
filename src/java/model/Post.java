@@ -14,10 +14,12 @@ public class Post implements Comparable<Post>{
     private String content;
     private String userID;
     private long datePosted;
+    private String profileURL;
 
-    public Post(String userID, String content, long datePosted) {
+    public Post(String userID, String content,String profileURL, long datePosted) {
         this.userID = userID;
         this.content = content;
+        this.profileURL = profileURL;
         this.datePosted = datePosted;
     }
 
@@ -57,4 +59,13 @@ public class Post implements Comparable<Post>{
         }
         
     }
+
+    public String getProfileURL() {
+        return profileURL;
+    }
+
+    public void setProfileURL(String profileURL) {
+        this.profileURL = profileURL;
+    }
+    
 }
