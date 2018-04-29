@@ -1,6 +1,7 @@
 package controller;
 
 import dao.UniversityDAO;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -9,7 +10,7 @@ import model.University;
 
 @ManagedBean
 @SessionScoped
-public class UniversityController {
+public class UniversityController implements Serializable {
     
     @Inject
     UniversityDAO universityDAO;

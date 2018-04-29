@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,7 +19,7 @@ import model.User;
  *
  * @author it353s836
  */
-public class UserDAO {
+public class UserDAO implements Serializable {
      private static final String DB_URL = "jdbc:derby://localhost:1527/Project353";
     private static final String USERNAME = "itkstu";
     private static final String PASSWORD = "student";

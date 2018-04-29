@@ -6,6 +6,7 @@
 package controller;
 
 import dao.UserDAO;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +19,7 @@ import model.User;
  */
 @ManagedBean
 @SessionScoped
-public class UserController {
+public class UserController implements Serializable {
     @Inject
     private UserDAO userDAO;
     private ArrayList<User> searchStudentResults;

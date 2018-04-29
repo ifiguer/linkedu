@@ -1,6 +1,7 @@
 package model;
 
 import dao.FeedDAO;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -18,7 +19,7 @@ import utility.EncryptPass;
 
 @ManagedBean(name = "LoginBean")
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable {
     
     @Inject
     private FeedDAO feedDAO;
