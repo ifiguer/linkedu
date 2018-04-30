@@ -1,6 +1,6 @@
 package model;
 
-public class University {
+public class University implements Comparable<University>{
     private String name;
     private String description;
     private boolean featured;
@@ -36,6 +36,16 @@ public class University {
     public void setFeatured(boolean featured) {
         this.featured = featured;
     }
-    
-    
+    @Override
+    public int compareTo(University other){
+        if (this.name.equals(other.name)){
+            return 0;
+        }
+        else if (this.name.compareTo(other.name) > 0 ){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
 }

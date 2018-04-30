@@ -3,6 +3,7 @@ package controller;
 import dao.UniversityDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ public class UniversityController implements Serializable {
     private String universityInput;
     private ArrayList<University> featured;
     private University university;
+    private List<University> searchUniversityResults;
 
     public String getUniversity() {
         return universityInput;
@@ -28,11 +30,11 @@ public class UniversityController implements Serializable {
     }
 
     public String showUniversity() {
-        university = universityDAO.getUniversityByName(universityInput);
-        if(university == null) {
+        searchUniversityResults = universityDAO.getUniversityByName(universityInput);
+        if(searchUniversityResults.isEmpty()) {
             return "profile";
         }
-        return "university";
+        return "universitySearchResults.xhtml";
     }
 
     public ArrayList<University> getFeaturedUniversities() {
@@ -48,4 +50,12 @@ public class UniversityController implements Serializable {
         return university.getDescription();
     }
 
+    public List<University> getSearchUniversityResults() {
+        return searchUniversityResults;
+    }
+
+    public void setSearchUniversityResults(List<University> searchUniversityResults) {
+        this.searchUniversityResults = searchUniversityResults;
+    }
+    
 }

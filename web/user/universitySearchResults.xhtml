@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/base.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html" 
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <div class="container">
+            <p>Search Results</p>
+            
+            <div>
+                <c:forEach items="#{universityController.searchUniversityResults}" var="university">
+                    <div class="student-search-result">
+                        
+                        <p>#{university.name}</p>
+                        <p>#{university.description}</p>
+                        
+                    </div>
+                </c:forEach>
+            </div>
+
+        </div>
+    </ui:define>
+</ui:composition>

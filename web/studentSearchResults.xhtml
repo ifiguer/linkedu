@@ -17,7 +17,11 @@ and open the template in the editor.
             <p>Search Results</p>
             <h:form>
                 <h:inputText value="#{userController.studentFollowID}"></h:inputText>
-                <h:commandButton action="#{userController.followUser()}"></h:commandButton>
+                <h:commandButton action="#{userController.followUser()}" value="Follow User"></h:commandButton>
+            </h:form>
+            <h:form>
+                <h:inputText value="#{userController.userToContact}"></h:inputText>
+                <h:commandButton action="#{userController.contactUser()}" value="Contact user"></h:commandButton>
             </h:form>
             <div>
                 <c:forEach items="#{userController.searchStudentResults}" var="students">

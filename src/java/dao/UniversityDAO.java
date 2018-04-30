@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import model.University;
 
 public class UniversityDAO implements Serializable {
@@ -14,15 +16,15 @@ public class UniversityDAO implements Serializable {
     private static final String DB_URL = "jdbc:derby://localhost:1527/Project353";
     private static final String USERNAME = "itkstu";
     private static final String PASSWORD = "student";
-    private static final String QUERY_BY_NAME = "SELECT * FROM Project353.UNIVERSITIES WHERE NAME LIKE ?";
+    private static final String QUERY_BY_NAME = "SELECT * FROM Project353.UNIVERSITIES WHERE upper(NAME) LIKE upper('%'||?||'%')";
 
     public University getUniversity(int id) {
         return new University("Illinois State Unviersity", "A description goes here.");
     }
 
-    public University getUniversityByName(String name) {
-        University university = null;
-
+    public List<University> getUniversityByName(String name) {
+        University university;
+        List<University> universityResults = new ArrayList<>();
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException e) {
@@ -36,16 +38,17 @@ public class UniversityDAO implements Serializable {
 
             ResultSet resultSet = query.executeQuery();
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String n = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 university = new University(n, description);
+                universityResults.add(university);
             }
         } catch (SQLException exception) {
             System.out.println("SQL ERROR: " + exception.getMessage());
         }
-
-        return university;
+        Collections.sort(universityResults);
+        return universityResults;
     }
 
     public ArrayList<University> getFeaturedUniversities() {
