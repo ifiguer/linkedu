@@ -206,6 +206,8 @@ public class LoginBean implements Serializable {
         setProfileURL(temp.getProfileURL());
         setSatScore(temp.getSatScore());
         setFollowing(temp.getFollowing());
+        setHighSchoolDetails(temp.getHighSchoolDetails());
+        setGradDetails(temp.getGradDetails());
         loginSuccess = true;
 
         return true;

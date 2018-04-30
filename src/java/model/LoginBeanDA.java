@@ -43,6 +43,8 @@ public class LoginBeanDA implements Serializable {
                 lb.setProfileURL(rs.getString("profileurl"));
                 lb.setSatScore(rs.getInt("sat"));
                 lb.setFollowing(rs.getString("following"));
+                lb.setHighSchoolDetails(rs.getString("highSchoolDetails"));
+                lb.setGradDetails(rs.getString("gradDetails"));
             }
             DBConn.close();
             return lb;
