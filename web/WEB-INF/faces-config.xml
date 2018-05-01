@@ -45,5 +45,10 @@
             <to-view-id>studentSearchResults.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>apply</from-outcome>
+            <to-view-id>user/apply.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

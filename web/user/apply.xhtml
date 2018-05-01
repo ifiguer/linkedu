@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/base.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content"> 
+        <div class="container apply">
+            <h1 class="title">Apply for admission</h1>
+            <h:form>
+                <div class="basic-info">
+                    <h2>Basic info</h2>
+                    <div>
+                        <label for="first-name">First name</label>
+                        <h:inputText id="first-name" value="#{LoginBean.firstname}" />
+                        
+                        <label for="last-name">Last name</label>
+                        <h:inputText id="last-name" value="#{LoginBean.lastname}" />
+                        
+                        <label for="email">Email</label>
+                        <h:inputText id="email" value="#{LoginBean.email}" />
+                    </div>
+                </div>
+
+                <div class="education">
+                    <h2>Education</h2>
+                    <div>
+                        <label for="high-school">High School</label>
+                        <h:inputText id="high-school" value="#{LoginBean.highSchoolDetails}" />
+                        <label for="act-score">ACT</label>
+                        <h:inputText id="act-score" value="#{LoginBean.actScore}" />
+                        <label for="sat-score">SAT</label>
+                        <h:inputText id="sat-score" value="#{LoginBean.satScore}" />
+                    </div>
+                </div>
+
+                <div class="major">
+                    <h2>Major</h2>
+                    <div>
+                        <label for="major-of-choice">Major</label>
+                        <h:inputText id="major-of-choice" value="#{LoginBean.majorOfChoice}" />
+                    </div>
+                </div>
+
+                <div class="essay">
+                    <h2>Essay</h2>
+                    <h:inputTextarea value="#{admissionController.essay}" />
+                </div>
+
+                <h:commandButton class="apply-btn" action="#{admissionController.apply}" value="Apply" />
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

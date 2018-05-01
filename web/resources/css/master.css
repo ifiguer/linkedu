@@ -174,6 +174,7 @@ body {
     width: 90%;
     max-width: 1000px;
     margin: auto;
+    padding-bottom: 3rem;
 }
 
 p, li {
@@ -202,9 +203,10 @@ p, li {
     font-size: .9rem;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], textarea {
+    border-radius: 3px;
     border: 1px solid var(--border-color);
-    padding: 7px;
+    padding: 10px;
 }
 
 input[type=text]:hover, input[type=password]:hover {
@@ -212,7 +214,7 @@ input[type=text]:hover, input[type=password]:hover {
     transition: border .2s ease-in;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
     outline: solid;
     outline-color: var(--primary);
 }
@@ -230,4 +232,46 @@ input[type=submit]:hover, input[type=button]:hover {
     background: var(--highlight);
     transition: background .2s;
     cursor: pointer;
+}
+
+.basic-info, .education, .major, .essay {
+    border: 1px solid var(--border-color);
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #eceff1;
+}
+
+.basic-info h2, .education h2, .major h2, .essay h2 {
+    font-size: 2.3rem;
+    font-weight: lighter;
+}
+
+.basic-info div, .education div, .major div {
+    margin-top: 1rem;
+    display: grid;
+    grid-gap: .5rem;
+    grid-template-columns: 130px 1fr; 
+}
+
+.basic-info label, .education label, .major label, .essay label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #616161;
+}
+
+.apply-btn {
+    margin-top: 1rem;
+}
+
+.essay textarea {
+    font-size: 1rem;
+    font-family: inherit;
+    margin-top: 1rem;
+    width: 100%;
+    height: 500px;
+}
+
+.apply {
+    max-width: 600px;
+    margin: auto;
 }

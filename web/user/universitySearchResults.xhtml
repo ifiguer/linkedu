@@ -14,15 +14,18 @@ and open the template in the editor.
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="content">
         <div class="container">
-            <p>Search Results</p>
-            
+            <h1 class="title">Search Results</h1>
+
             <div>
                 <c:forEach items="#{universityController.searchUniversityResults}" var="university">
-                    <div class="student-search-result">
-                        
-                        <p>#{university.name}</p>
+                    <div class="university-search-result">
+
+                        <h1 class="title">#{university.name}</h1>
                         <p>#{university.description}</p>
-                        
+                        <h:form>
+                            <input type="hidden" id="university" name="university" value="#{university.name}" />
+                            <h:commandButton action="#{admissionController.applicationView()}" value="Apply" />
+                        </h:form>
                     </div>
                 </c:forEach>
             </div>
