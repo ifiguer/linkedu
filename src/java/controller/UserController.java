@@ -17,6 +17,7 @@ import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -60,15 +61,16 @@ public class UserController implements Serializable {
     }
 
     public void followUser() {
-        if (userDAO.addUserToFollowingList(temp, studentFollowID) == 1) {
+        String userToFollow = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userToFollow");
+        if (userDAO.addUserToFollowingList(temp, userToFollow) == 1) {
             errorResponse = "Successfully followed user";
         } else {
             errorResponse = "An error occurred following user";
         }
-
     }
 
     public void contactUser() {
+        String studentToContact = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userToContact");
         String email = "";
         String n="";
         
@@ -80,7 +82,7 @@ public class UserController implements Serializable {
         }
 
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
-            String queryString = "select * from Project353.Users where Project353.Users.userid like '" + userToContact + "'";
+            String queryString = "select * from Project353.Users where Project353.Users.userid like '" + studentToContact + "'";
             PreparedStatement query = connection.prepareStatement(queryString);
             
             ResultSet resultSet = query.executeQuery();

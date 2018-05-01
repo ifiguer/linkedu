@@ -15,14 +15,6 @@ and open the template in the editor.
     <ui:define name="content">
         <div class="container">
             <p>Search Results</p>
-            <h:form>
-                <h:inputText value="#{userController.studentFollowID}"></h:inputText>
-                <h:commandButton action="#{userController.followUser()}" value="Follow User"></h:commandButton>
-            </h:form>
-            <h:form>
-                <h:inputText value="#{userController.userToContact}"></h:inputText>
-                <h:commandButton action="#{userController.contactUser()}" value="Contact user"></h:commandButton>
-            </h:form>
             <div>
                 <c:forEach items="#{userController.searchStudentResults}" var="students">
                     <div class="student-search-result">
@@ -30,11 +22,14 @@ and open the template in the editor.
                         <p>#{students.name}</p>
                         <p>#{students.highSchoolName}</p>
                         <p>#{students.gradDetails}</p>
-                        <h:commandButton action="#{userController.followUser()}" value="follow">
-                            
-                            <f:param name="id" value="#{students.userID}"/>
-                                     
-                        </h:commandButton>
+                        <h:form>
+                            <input type="hidden" id="userToFollowID" name="userToFollow" value="#{students.userID}" />
+                            <h:commandButton action="#{userController.followUser()}" value="Follow" />
+                        </h:form>
+                        <h:form>
+                            <input type="hidden" id="userToContactID" name="userToContact" value="#{students.userID}" />
+                            <h:commandButton action="#{userController.contactUser()}" value="Contact" />
+                        </h:form>
                     </div>
                 </c:forEach>
             </div>
