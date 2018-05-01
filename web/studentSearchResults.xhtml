@@ -14,7 +14,7 @@ and open the template in the editor.
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="content">
         <div class="container">
-            <p>Search Results</p>
+            <h1 class="title">Search Results</h1>
             <div>
                 <c:forEach items="#{userController.searchStudentResults}" var="students">
                     <div class="student-search-result">
@@ -22,14 +22,16 @@ and open the template in the editor.
                         <p>#{students.name}</p>
                         <p>#{students.highSchoolName}</p>
                         <p>#{students.gradDetails}</p>
-                        <h:form>
-                            <input type="hidden" id="userToFollowID" name="userToFollow" value="#{students.userID}" />
-                            <h:commandButton action="#{userController.followUser()}" value="Follow" />
-                        </h:form>
-                        <h:form>
-                            <input type="hidden" id="userToContactID" name="userToContact" value="#{students.userID}" />
-                            <h:commandButton action="#{userController.contactUser()}" value="Contact" />
-                        </h:form>
+                        <div class="student-actions">
+                            <h:form>
+                                <input type="hidden" id="userToFollowID" name="userToFollow" value="#{students.userID}" />
+                                <h:commandButton action="#{userController.followUser()}" value="Follow" />
+                            </h:form>
+                            <h:form>
+                                <input type="hidden" id="userToContactID" name="userToContact" value="#{students.userID}" />
+                                <h:commandButton action="#{userController.contactUser()}" value="Contact" />
+                            </h:form>
+                        </div>
                     </div>
                 </c:forEach>
             </div>

@@ -63,6 +63,14 @@ body {
     margin-top: 1rem;
 }
 
+.student-actions {
+    margin-top: 1rem;
+}
+
+.student-actions form {
+    display: inline;
+}
+
 .post-input {
     width: 100%;
 }
@@ -146,7 +154,7 @@ body {
 }
 
 .student-search-result {
-    background: #f5f5f5;
+    background: #eceff1;
     margin: 1rem 0;
     padding: 1rem;
     border: 1px solid var(--border-color);
