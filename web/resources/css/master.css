@@ -10,6 +10,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --primary: #2962ff;
     --highlight: #448aff;
+    --border-color: #b0bec5;
 }
 
 .title {
@@ -57,7 +58,7 @@ body {
 
 .featured-university {
     background: #f5f5f5;
-    border: 1px solid lightgray;
+    border: 1px solid var(--border-color);
     padding: 10px;
     margin-top: 1rem;
 }
@@ -68,12 +69,8 @@ body {
 
 .profile, .feed, .ads {
     padding: 1rem;
-    border: 1px solid lightgray;
-    background: #fafafa;
-}
-
-.profile {
-
+    border: 1px solid var(--border-color);
+    background: #eceff1;
 }
 
 .profile p {
@@ -81,14 +78,12 @@ body {
 }
 
 .profile-pic {
-    border: 4px solid lightsteelblue;
     width: 70px;
     height: 70px;
     border-radius: 100%;
-    background: lightslategray;
 }
 
-.profile-div{
+.profile-div {
     margin: auto;
     width: 70px;
     height: 70px;
@@ -99,10 +94,28 @@ body {
     margin: auto;
 }
 
+.post .profile-pic {
+    margin-right: 1rem;
+    float: left;
+}
+
+.post .username {
+    font-weight: bold;
+    color: #616161;
+}
+
+.new-post {
+    background: #cfd8dc;
+}
+
 .new-post, .post {
     padding: 10px 1rem;
-    background: #f5f5f5;
-    border: 1px solid lightgray;
+    border: 1px solid var(--border-color);
+}
+
+.post {
+    background: white;
+    border-top: none;
 }
 
 .row {
@@ -111,11 +124,14 @@ body {
     grid-gap: 10px;
 }
 
+.ads .row {
+    margin-bottom: .5rem;
+}
+
 .feed {
-    background: white;
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 15px;
+    grid-gap: 0;
 }
 
 .landing {
@@ -130,7 +146,7 @@ body {
     background: #f5f5f5;
     margin: 1rem 0;
     padding: 1rem;
-    border: 1px solid lightgray;
+    border: 1px solid var(--border-color);
 }
 
 .student-search-result p {
@@ -176,7 +192,7 @@ p, li {
 }
 
 input[type=text], input[type=password] {
-    border: 1px solid lightgray;
+    border: 1px solid var(--border-color);
     padding: 7px;
 }
 
