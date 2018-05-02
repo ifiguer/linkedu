@@ -47,7 +47,14 @@
                 <p>Featured University</p>
                 <div>
                     <c:forEach items="#{universityController.featuredUniversities}" var="university">
-                        <div class="featured-university">#{university.name}</div>
+                        <div class="featured-university">#{university.name}
+                            <h:form>
+                                <input type="hidden" id="university" name="university" value="#{university.name}" />
+                                <c:if test="#{LoginBean.administrator eq true}">
+                                    <h:commandButton action="#{universityController.removeFeatured()}" value="X"/>
+                                </c:if>
+                            </h:form>
+                        </div>
                     </c:forEach>
                 </div>
             </div>

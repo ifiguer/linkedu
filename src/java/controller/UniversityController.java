@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import model.University;
 
@@ -15,7 +16,7 @@ public class UniversityController implements Serializable {
     
     @Inject
     UniversityDAO universityDAO;
-
+    
     private String universityInput;
     private ArrayList<University> featured;
     private University university;
@@ -28,7 +29,24 @@ public class UniversityController implements Serializable {
     public void setUniversity(String university) {
         this.universityInput = university;
     }
-
+    public void addToFeatured(){
+        String u = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("university");
+        if (universityDAO.addToFeatured(u) == 1){
+            System.out.print("Added to featured");
+        }
+        else{
+            System.out.print("Did not add to featured");
+        }
+    }
+    public void removeFeatured(){
+        String u = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("university");
+        if (universityDAO.removeFeatured(u) == 1){
+            System.out.print("Added to featured");
+        }
+        else{
+            System.out.print("Did not add to featured");
+        }
+    }
     public String showUniversity() {
         searchUniversityResults = universityDAO.getUniversityByName(universityInput);
         if(searchUniversityResults.isEmpty()) {

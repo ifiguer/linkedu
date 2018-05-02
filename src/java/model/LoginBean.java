@@ -61,6 +61,7 @@ public class LoginBean implements Serializable {
     private int loginAttempts = 0;
     private String errorResponse = "";
     private boolean loginSuccess = false;
+    private boolean administrator = false;
     
     public LoginBean() {
         posts = new ArrayList<>();
@@ -208,6 +209,7 @@ public class LoginBean implements Serializable {
         setFollowing(temp.getFollowing());
         setHighSchoolDetails(temp.getHighSchoolDetails());
         setGradDetails(temp.getGradDetails());
+        setAdministrator(temp.isAdministrator());
         loginSuccess = true;
 
         return true;
@@ -445,6 +447,16 @@ public class LoginBean implements Serializable {
         this.following = following;
     }
 
- 
+    public boolean isAdministrator() {
+        return administrator;
+    }
+
+    public void setAdministrator(boolean administrator) {
+        this.administrator = administrator;
+    }
+
+   
+
+    
     
 }

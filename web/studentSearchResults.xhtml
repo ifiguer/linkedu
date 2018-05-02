@@ -31,6 +31,12 @@ and open the template in the editor.
                                 <input type="hidden" id="userToContactID" name="userToContact" value="#{students.userID}" />
                                 <h:commandButton action="#{userController.contactUser()}" value="Contact" />
                             </h:form>
+                            <c:if test="#{LoginBean.administrator eq true}">
+                                <h:form>
+                                    <input type="hidden" id="userToPromoteID" name="userToPromote" value="#{students.userID}" />
+                                    <h:commandButton action="#{userController.promoteUser()}" value="Promote to Admin" />
+                                </h:form>
+                            </c:if>
                         </div>
                     </div>
                 </c:forEach>

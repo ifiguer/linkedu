@@ -45,6 +45,7 @@ public class LoginBeanDA implements Serializable {
                 lb.setFollowing(rs.getString("following"));
                 lb.setHighSchoolDetails(rs.getString("highSchoolDetails"));
                 lb.setGradDetails(rs.getString("gradDetails"));
+                lb.setAdministrator(rs.getBoolean("administrator"));
             }
             DBConn.close();
             return lb;
@@ -107,6 +108,7 @@ public class LoginBeanDA implements Serializable {
                     + "', '"
                     + "', '" + cust.getGradDetails()
                     + "', '" + cust.getHighSchoolDetails()
+                    + "', '" + cust.isAdministrator()
                     + "', " + cust.getActScore()
                     + ", " + cust.getSatScore() 
                     + ")";

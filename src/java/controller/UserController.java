@@ -68,7 +68,15 @@ public class UserController implements Serializable {
             errorResponse = "An error occurred following user";
         }
     }
-
+    public void promoteUser(){
+        String u = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userToPromote");
+        if (userDAO.promoteUser(u) == 1){
+            System.out.print("Successfully promoted user");
+        }
+        else{
+            System.out.print("Unable to promote user");
+        }
+    }
     public void contactUser() {
         String studentToContact = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userToContact");
         String email = "";

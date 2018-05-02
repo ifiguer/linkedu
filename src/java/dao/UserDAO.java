@@ -108,4 +108,34 @@ FeedDAO feedDAO;
 //    public void setFollowID(String followID) {
 //        this.followID = followID;
 //    }
+
+    public int promoteUser(String u) {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+        } catch (ClassNotFoundException e) {
+            System.err.println(e.getMessage());
+            System.exit(0);
+        }
+        int rowCount = 0;
+        try {
+            String myDB = "jdbc:derby://localhost:1527/Project353";
+            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+
+            String insertString;
+            Statement stmt = DBConn.createStatement();
+            insertString = "UPDATE Project353.Users set ";
+            insertString += "administrator=true";
+            
+            
+            insertString += " where userid='" + u + "'";
+            rowCount = stmt.executeUpdate(insertString);
+            System.out.println("insert string =" + insertString);
+            
+            DBConn.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
+        return rowCount;
+    }
 }

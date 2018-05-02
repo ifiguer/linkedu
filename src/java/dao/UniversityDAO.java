@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -76,5 +77,65 @@ public class UniversityDAO implements Serializable {
             System.out.println("SQL ERROR: " + exception.getMessage());
         }
         return featured;
+    }
+
+    public int addToFeatured(String u) {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+        } catch (ClassNotFoundException e) {
+            System.err.println(e.getMessage());
+            System.exit(0);
+        }
+        int rowCount = 0;
+        try {
+            String myDB = "jdbc:derby://localhost:1527/Project353";
+            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+
+            String insertString;
+            Statement stmt = DBConn.createStatement();
+            insertString = "UPDATE Project353.Universities set ";
+            insertString += "featured=true";
+            
+            
+            insertString += " where name='" + u + "'";
+            rowCount = stmt.executeUpdate(insertString);
+            System.out.println("insert string =" + insertString);
+            
+            DBConn.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
+        return rowCount;
+    }
+
+    public int removeFeatured(String u) {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+        } catch (ClassNotFoundException e) {
+            System.err.println(e.getMessage());
+            System.exit(0);
+        }
+        int rowCount = 0;
+        try {
+            String myDB = "jdbc:derby://localhost:1527/Project353";
+            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+
+            String insertString;
+            Statement stmt = DBConn.createStatement();
+            insertString = "UPDATE Project353.Universities set ";
+            insertString += "featured=false";
+            
+            
+            insertString += " where name='" + u + "'";
+            rowCount = stmt.executeUpdate(insertString);
+            System.out.println("insert string =" + insertString);
+            
+            DBConn.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
+        return rowCount;
     }
 }
