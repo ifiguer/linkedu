@@ -108,8 +108,8 @@ public class LoginBeanDA implements Serializable {
                     + "', '"
                     + "', '" + cust.getGradDetails()
                     + "', '" + cust.getHighSchoolDetails()
-                    + "', '" + cust.isAdministrator()
-                    + "', " + cust.getActScore()
+                    + "', false, "
+                    + cust.getActScore()
                     + ", " + cust.getSatScore() 
                     + ")";
             rowCount = stmt.executeUpdate(insertString);
