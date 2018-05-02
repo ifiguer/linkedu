@@ -62,7 +62,7 @@ public class LoginBean implements Serializable {
     private String errorResponse = "";
     private boolean loginSuccess = false;
     private boolean administrator = false;
-    
+
     public LoginBean() {
         posts = new ArrayList<>();
     }
@@ -116,23 +116,25 @@ public class LoginBean implements Serializable {
                 sendMail();
                 setProfileURL("img/egg.jpg");
                 loginSuccess = true;
+                authenticationBean.setName(username);
+                authenticationBean.login();
                 return "profile";
             }
 
         }
 
     }
-  
+
     public String addPost() {
 
         if (feedDAO.addPostToDB(username, postContent) != 1) {
             errorResponse = "There was a problem creating your post. Please try again later.";
             return "profile";
         } else {
-            
+
             Date now = new Date();
-            
-            Post temp = new Post(username,postContent,profileURL,now.getTime());
+
+            Post temp = new Post(username, postContent, profileURL, now.getTime());
             posts.add(temp);
             Collections.sort(posts);
             postContent = "";
@@ -455,8 +457,4 @@ public class LoginBean implements Serializable {
         this.administrator = administrator;
     }
 
-   
-
-    
-    
 }
