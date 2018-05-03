@@ -4,10 +4,10 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <ui:define name="navigation">
-
-    </ui:define>
     <ui:define name="content">
+        <h:panelGroup layout="block" class="error-message" rendered="#{not empty flash.logInError}">
+            <h:outputText value="#{flash.logInError}"></h:outputText>
+        </h:panelGroup>
         <div class="welcome-banner container">
             <c:if test="#{LoginBean.loginSuccess eq false}">
                 <div class="welcome-left">

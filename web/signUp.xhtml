@@ -5,6 +5,9 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content"> 
+        <h:panelGroup layout="block" class="error-message" rendered="#{not empty flash.signUpError}">
+            <h:outputText value="#{flash.signUpError}"></h:outputText>
+        </h:panelGroup>
         <div class="container">
             <h1 class="title text-center">Sign Up</h1>
             <h:form class="signup-form">
@@ -30,7 +33,6 @@
                 <h:commandButton value="Next" action="additionalInfo" />
 
             </h:form>
-            <br/><h:outputText style="color:red" value="#{LoginBean.errorResponse}"></h:outputText>
             <h:outputText style="#{LoginBean.usernamestyle}" id="usernamemessage" value="#{LoginBean.usernamemessage}"></h:outputText>
         </div>
     </ui:define>

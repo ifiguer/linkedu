@@ -6,6 +6,9 @@
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:define name="content">
+        <h:panelGroup layout="block" class="error-message" rendered="#{not empty flash.addPostError}">
+            <h:outputText value="#{flash.addPostError}"></h:outputText>
+        </h:panelGroup>
         <div class="landing">
             <div class="profile">
                 <div class="profile-div"><h:graphicImage class="profile-pic" name="#{LoginBean.profileURL}"/></div>

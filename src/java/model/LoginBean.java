@@ -11,6 +11,8 @@ import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -57,7 +59,6 @@ public class LoginBean implements Serializable {
     private String postContent;
     private String usernamestyle;
     private int loginAttempts = 0;
-    private String errorResponse = "";
     private boolean loginSuccess = false;
     private boolean administrator = false;
 
@@ -75,13 +76,18 @@ public class LoginBean implements Serializable {
 
     public String update() {
         if (!password.equals(confirmPassword)) {
-            errorResponse = "Passwords do not match";
+            addFlashAttribute("updateError", "Passwords do not match");
             return "update";
         } else if (LoginBeanDA.updateCustomerToDB(this) != 1) {
-            errorResponse = "An error has occurred while updating your profile. Please check input and try again";
+            addFlashAttribute("updateError", "An error has occurred while updating your profile. Please check input and try again");
             return "update";
         }
         return "profile";
+    }
+    
+    private void addFlashAttribute(String key, String value) {
+        FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put(key, value);
     }
 
     public String login() {
@@ -92,7 +98,7 @@ public class LoginBean implements Serializable {
             return "profile";
         } else {
             loginSuccess = false;
-            return "LoginBad.xhtml";
+            return "";
         }
 
     }
@@ -108,7 +114,7 @@ public class LoginBean implements Serializable {
             return "signUp";
         } else {
             if (LoginBeanDA.storeCustomerToDB(this) != 1) {
-                errorResponse = "There was a problem creating your account. Please try again later.";
+                addFlashAttribute("signUpError", "There was a problem creating your account. Please try again later.");
                 return "signUp";
             } else {
                 sendMail();
@@ -126,7 +132,7 @@ public class LoginBean implements Serializable {
     public String addPost() {
 
         if (feedDAO.addPostToDB(username, postContent) != 1) {
-            errorResponse = "There was a problem creating your post. Please try again later.";
+            addFlashAttribute("addPostError", "There was a problem creating your post. Please try again later.");
             return "profile";
         } else {
 
@@ -140,7 +146,7 @@ public class LoginBean implements Serializable {
         }
 
     }
-
+    
     private boolean sendMail() {
         String to = email;
         String from = "bmjame1@ilstu.edu";
@@ -186,13 +192,13 @@ public class LoginBean implements Serializable {
     private boolean validateLogin() {
         LoginBean temp;
         if (loginAttempts >= 3) {
-            errorResponse = "You have unsuccessfully logged in too many times. Please try again later.";
+            addFlashAttribute("logInError", "You have unsuccessfully logged in too many times. Please try again later.");
             return false;
         }
 
         if ((temp = LoginBeanDA.validInfo(username, password)) == null) {
             loginAttempts++;
-            errorResponse = "Invalid username or password";
+            addFlashAttribute("logInError", "Invalid username or password");
             return false;
         }
 
@@ -217,10 +223,10 @@ public class LoginBean implements Serializable {
         if (!checkNames()) {
             return false;
         } else if (LoginBeanDA.usernameTaken(username)) {
-            errorResponse = "Username is already taken";
+            addFlashAttribute("signUpError", "Username is already taken");
             return false;
         } else if (!password.equals(confirmPassword)) {
-            errorResponse = "Passwords do not match";
+            addFlashAttribute("signUpError", "Passwords do not match");
             return false;
         }
 
@@ -243,7 +249,7 @@ public class LoginBean implements Serializable {
     private boolean checkNames() {
         String fullname2 = firstname + " " + lastname;
         if (fullname2.length() < 6 || fullname2.length() > 25) {
-            errorResponse = "Fullname length must be between 6 and 25 characters";
+            addFlashAttribute("signUpError", "Fullname length must be between 6 and 25 characters");
             return false;
         }
         return true;
@@ -335,14 +341,6 @@ public class LoginBean implements Serializable {
 
     public void setLoginSuccess(boolean loginSuccess) {
         this.loginSuccess = loginSuccess;
-    }
-
-    public String getErrorResponse() {
-        return errorResponse;
-    }
-
-    public void setErrorResponse(String errorResponse) {
-        this.errorResponse = errorResponse;
     }
 
     public String getFirstname() {

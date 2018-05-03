@@ -7,6 +7,9 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content"> 
+        <h:panelGroup layout="block" class="error-message" rendered="#{not empty flash.updateError}">
+            <h:outputText value="#{flash.updateError}"></h:outputText>
+        </h:panelGroup>
         <div class="container">
             <c:if test="${LoginBean.loginSuccess=='true'}">
                 <h1 class="title text-center">Update</h1>
@@ -44,7 +47,6 @@
                     <p:fileUpload update="growl" fileUploadListener="#{fileUploadController.upload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="1000000"/>
                    <!-- 2. Refresh to see the image uploaded (assuming it is 'CrawlingSnakes.gif', initially not found) : <h:graphicImage value="#{resource['images:CrawlingSnakes.gif']}"/> -->
                 </h:form>
-                <h:outputText value="#{LoginBean.errorResponse}"></h:outputText>
             </c:if>
             <c:if test="${LoginBean.loginSuccess=='false'}">         
                 <script>window.location = "#{LoginBean.redirectLogin()}"</script>

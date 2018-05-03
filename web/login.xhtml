@@ -3,7 +3,10 @@
                 template="/templates/base.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <ui:define name="content"> 
+    <ui:define name="content">
+        <h:panelGroup layout="block" class="error-message" rendered="#{not empty flash.logInError}">
+            <h:outputText value="#{flash.logInError}"></h:outputText>
+        </h:panelGroup>
         <div class="container">
             <h1 class="title text-center">Login</h1>
             <h:form class="signup-form">
