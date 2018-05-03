@@ -11,7 +11,6 @@ import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.mail.Message;
@@ -367,11 +366,11 @@ public class LoginBean implements Serializable {
         this.loginAttempts = loginAttempts;
     }
 
-    public void setconfirmPassword(String confirmPassword) {
+    public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = EncryptPass.hashPassword(confirmPassword);
     }
 
-    public String getconfirmPassword() {
+    public String getConfirmPassword() {
         return confirmPassword;
     }
 

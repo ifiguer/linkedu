@@ -18,7 +18,6 @@
                 <h:inputText value="#{LoginBean.gradDetails}" id="graddetails"></h:inputText>
                 <h:commandButton value="Sign Up" action="#{LoginBean.persist()}" />
             </h:form>
-            <br/><h:outputText style="color:red" value="#{LoginBean.errorResponse}"></h:outputText>
             <h:outputText style="#{LoginBean.usernamestyle}" id="usernamemessage" value="#{LoginBean.usernamemessage}"></h:outputText>
         </div>
     </ui:define>

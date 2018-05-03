@@ -29,8 +29,9 @@ public class UserDAO implements Serializable {
     private static final String SEARCH_QUERY_BY_NAME = "SELECT firstname,lastname,userID,profileURL,gradDetails,highSchooldetails "
             + "FROM Project353.Users WHERE Upper(firstname || ' ' || lastname) LIKE Upper('%'||?||'%') OR UPPER(firstname) LIKE upper('%'||?||'%') OR UPPER(lastname) LIKE UPPER('%'||?||'%')";
     private static final String DELIMITER = ":";
-@Inject
-FeedDAO feedDAO;
+    @Inject
+    FeedDAO feedDAO;
+
     public ArrayList<User> checkDBForStudents(String entry) {
         ArrayList<User> userList = new ArrayList();
         User user;
@@ -66,7 +67,7 @@ FeedDAO feedDAO;
 
     }
 
-    public int addUserToFollowingList(LoginBean cust,String followID) {
+    public int addUserToFollowingList(LoginBean cust, String followID) {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException e) {
@@ -83,7 +84,7 @@ FeedDAO feedDAO;
             insertString = "UPDATE Project353.Users set ";
             insertString += "following='";
             insertString += (cust.getFollowing().equals("") ? followID + "'" : cust.getFollowing() + DELIMITER + followID + "'");
-            cust.setFollowing(cust.getFollowing().equals("") ? followID:  cust.getFollowing() + DELIMITER + followID);
+            cust.setFollowing(cust.getFollowing().equals("") ? followID : cust.getFollowing() + DELIMITER + followID);
             insertString += " where userid='" + cust.getUsername() + "'";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
@@ -111,12 +112,11 @@ FeedDAO feedDAO;
             Statement stmt = DBConn.createStatement();
             insertString = "UPDATE Project353.Users set ";
             insertString += "administrator=true";
-            
-            
+
             insertString += " where userid='" + u + "'";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
-            
+
             DBConn.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
