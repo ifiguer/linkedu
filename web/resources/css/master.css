@@ -122,6 +122,7 @@ body {
 }
 
 .post {
+    display: flex;
     background: white;
     border-top: none;
 }
@@ -140,9 +141,6 @@ body {
     padding: 0;
     background: white;
     border: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 0;
 }
 
 .landing {
