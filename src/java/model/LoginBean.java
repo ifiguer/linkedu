@@ -45,8 +45,6 @@ public class LoginBean implements Serializable {
     private String password;
     private String confirmPassword;
     private String email;
-    private String secQuestion;
-    private String secAnswer;
     private String following;
     private String universityOfChoice;
     private String majorOfChoice;
@@ -169,9 +167,7 @@ public class LoginBean implements Serializable {
             message.setSubject("Welcome to the club, " + getFirstname() + " " + getLastname() + "!");
             String content = "Username: " + getUsername()
                     + "<br/>Email: " + getEmail()
-                    + "<br/>Full Name: " + getFirstname() + " " + getLastname()
-                    + "<br/>Security Question: " + getSecQuestion()
-                    + "<br/>Security Answer: " + getSecAnswer();
+                    + "<br/>Full Name: " + getFirstname() + " " + getLastname();
 
             message.setContent("<h1>Welcome to our club!</h1>" + "<br/>" + "<img src=\"https://media1.tenor.com/images/84639bd1ba31a05d8ec04a880eecde21/tenor.gif?itemid=10909950\">" + "<br/>" + "<h2>Here is your information: </h2>" + "<br/>" + content,
                     "text/html");
@@ -331,22 +327,6 @@ public class LoginBean implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getSecQuestion() {
-        return secQuestion;
-    }
-
-    public void setSecQuestion(String secQuestion) {
-        this.secQuestion = secQuestion;
-    }
-
-    public String getSecAnswer() {
-        return secAnswer;
-    }
-
-    public void setSecAnswer(String secAnswer) {
-        this.secAnswer = secAnswer;
     }
 
     public boolean isLoginSuccess() {
