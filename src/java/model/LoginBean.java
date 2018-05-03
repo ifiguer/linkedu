@@ -119,6 +119,7 @@ public class LoginBean implements Serializable {
         this.following = "";
         this.highSchoolDetails = "";
         this.majorOfChoice = "";
+        this.gradDetails = "";
         
         return "welcome";
     }
