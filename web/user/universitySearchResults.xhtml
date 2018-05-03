@@ -25,6 +25,7 @@ and open the template in the editor.
                         <h:form>
                             <input type="hidden" id="university" name="university" value="#{university.name}" />
                             <h:commandButton action="#{admissionController.applicationView()}" value="Apply" />
+                            <h:commandButton action="appointment" value="Schedule a visit" />
                             <c:if test="#{LoginBean.administrator eq true}">
                                 <h:commandButton action="#{universityController.addToFeatured()}" value="Feature University"/>
                             </c:if>

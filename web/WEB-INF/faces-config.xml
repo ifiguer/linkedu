@@ -50,5 +50,10 @@
             <to-view-id>user/apply.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>appointment</from-outcome>
+            <to-view-id>user/appointment.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>s
     </navigation-rule>
 </faces-config>

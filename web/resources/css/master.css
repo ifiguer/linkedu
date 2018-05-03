@@ -224,6 +224,7 @@ input[type=text]:hover, input[type=password]:hover {
 }
 
 input[type=submit], input[type=button] {
+    margin-right: .5rem;
     padding: 8px 15px;
     border-radius: 4px;
     font-size: 1.1rem;
@@ -248,6 +249,10 @@ input[type=submit]:hover, input[type=button]:hover {
 .basic-info h2, .education h2, .major h2, .essay h2 {
     font-size: 2.3rem;
     font-weight: lighter;
+}
+
+.appointment div {
+    padding: 1rem 0;
 }
 
 .basic-info div, .education div, .major div {

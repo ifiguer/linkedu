@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/base.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:define name="content"> 
+        <div class="container appointment">
+            <h1 class="title">Schedule and appointment</h1>
+            <h:form>
+                <div>
+                    <label for="date">Please select a date.</label>
+                    <input id="date" type="date" jsf:value="#{appointment.date}" />
+                </div>
+
+                <div>
+                    <label for="time">Please select a time.</label>
+                    <input id="time" type="time" jsf:value="#{appointment.time}" />
+                </div>
+                <h:commandButton action="#{appointment.schedule()}" value="Schedule" />
+            </h:form>
+
+        </div>
+    </ui:define>
+</ui:composition>
