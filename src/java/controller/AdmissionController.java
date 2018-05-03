@@ -1,10 +1,11 @@
 package controller;
 
-import javax.enterprise.context.SessionScoped;
+
 import java.io.Serializable;
 import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.mail.Message;
 import javax.mail.MessagingException;

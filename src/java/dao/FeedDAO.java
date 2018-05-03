@@ -6,10 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.SessionScoped;
@@ -94,21 +92,23 @@ public class FeedDAO implements Serializable {
             Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
 
             String insertString;
-            Statement stmt = DBConn.createStatement();
             Date temp = new Date();
-
+            
             insertString = "INSERT INTO Project353.Posts VALUES ('"
                     + username
-                    + "', '" + postContent
+                    + "',?, '" 
                     + "', " + temp.getTime() + ")";
-            rowCount = stmt.executeUpdate(insertString);
+            
+            PreparedStatement pstmt = DBConn.prepareStatement(insertString);
+            pstmt.setString(1, postContent);
+
+            rowCount = pstmt.executeUpdate();
             System.out.println("insert string =" + insertString);
             DBConn.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
 
-        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
     }
 }

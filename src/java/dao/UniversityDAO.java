@@ -19,10 +19,6 @@ public class UniversityDAO implements Serializable {
     private static final String PASSWORD = "student";
     private static final String QUERY_BY_NAME = "SELECT * FROM Project353.UNIVERSITIES WHERE upper(NAME) LIKE upper('%'||?||'%')";
 
-    public University getUniversity(int id) {
-        return new University("Illinois State Unviersity", "A description goes here.");
-    }
-
     public List<University> getUniversityByName(String name) {
         University university;
         List<University> universityResults = new ArrayList<>();
@@ -64,7 +60,6 @@ public class UniversityDAO implements Serializable {
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
             String queryString = "select * from Project353.Universities where Project353.Universities.featured";
 
-            // Note the use of a diff class, called PreparedStatement
             PreparedStatement pstmt = connection.prepareStatement(queryString);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
@@ -105,7 +100,6 @@ public class UniversityDAO implements Serializable {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
     }
 
@@ -135,7 +129,6 @@ public class UniversityDAO implements Serializable {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
     }
 }
