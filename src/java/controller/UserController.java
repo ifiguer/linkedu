@@ -29,10 +29,6 @@ import javax.mail.internet.MimeMessage;
 import model.LoginBean;
 import model.User;
 
-/**
- *
- * @author it353s836
- */
 @ManagedBean
 @SessionScoped
 public class UserController implements Serializable {
@@ -67,20 +63,21 @@ public class UserController implements Serializable {
             errorResponse = "An error occurred following user";
         }
     }
-    public void promoteUser(){
+
+    public void promoteUser() {
         String u = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userToPromote");
-        if (userDAO.promoteUser(u) == 1){
+        if (userDAO.promoteUser(u) == 1) {
             System.out.print("Successfully promoted user");
-        }
-        else{
+        } else {
             System.out.print("Unable to promote user");
         }
     }
+
     public void contactUser() {
         String studentToContact = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userToContact");
         String email = "";
-        String n="";
-        
+        String n = "";
+
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException e) {
@@ -91,18 +88,18 @@ public class UserController implements Serializable {
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
             String queryString = "select * from Project353.Users where Project353.Users.userid like '" + studentToContact + "'";
             PreparedStatement query = connection.prepareStatement(queryString);
-            
+
             ResultSet resultSet = query.executeQuery();
 
             if (resultSet.next()) {
-                 n = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
-                 email = resultSet.getString("email");
+                n = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
+                email = resultSet.getString("email");
             }
         } catch (SQLException exception) {
             System.out.println("SQL ERROR: " + exception.getMessage());
         }
-        String to = "brandonjames879@gmail.com"; //email
-        String from = "bmjame1@ilstu.edu";
+        String to = "isaac.229@hotmail.com"; //email
+        String from = "ifiguer@ilstu.edu";
         String host = "outlook.office365.com";
         Properties properties = System.getProperties();
 
@@ -114,7 +111,7 @@ public class UserController implements Serializable {
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("bmjame1@ilstu.edu", "passwordgoeshere");
+                return new PasswordAuthentication("ifiguer@ilstu.edu", "");
             }
         });
 
@@ -124,20 +121,33 @@ public class UserController implements Serializable {
             message.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(to));
             message.setSubject("Someone would like to know more about you, " + n + "!");
-            String content = "<h2>"+ temp.getFullname()+" is looking to get in touch with you! <br/> You can contact them at " + temp.getEmail() + "</h2>";
+
+            String content = buildContent(temp.getFullname(), temp.getEmail());
 
             message.setContent(content,
                     "text/html");
 
             Transport.send(message);
             System.out.println("Sent message successfully....");
-            
+
         } catch (MessagingException mex) {
             mex.printStackTrace();
         } catch (Exception e) {
 
         }
-        
+
+    }
+
+    private String buildContent(String user, String email) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(user)
+                .append(" is looking to get in touch with you!<br>")
+                .append("You can contact them at ")
+                .append(email)
+                .append("<br><br>")
+                .append("Sincerely,<br><br>")
+                .append("LinkedU");
+        return sb.toString();
     }
 
     public ArrayList<User> getSearchStudentResults() {
