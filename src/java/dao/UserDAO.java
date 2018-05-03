@@ -13,10 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.faces.bean.ManagedProperty;
 import javax.inject.Inject;
 import model.LoginBean;
-import model.University;
 import model.User;
 
 /**
@@ -31,8 +29,6 @@ public class UserDAO implements Serializable {
     private static final String SEARCH_QUERY_BY_NAME = "SELECT firstname,lastname,userID,profileURL,gradDetails,highSchooldetails "
             + "FROM Project353.Users WHERE Upper(firstname || ' ' || lastname) LIKE Upper('%'||?||'%') OR UPPER(firstname) LIKE upper('%'||?||'%') OR UPPER(lastname) LIKE UPPER('%'||?||'%')";
     private static final String DELIMITER = ":";
-//    @ManagedProperty(value = "#{param.id}")
-//    private String followID;
 @Inject
 FeedDAO feedDAO;
     public ArrayList<User> checkDBForStudents(String entry) {
@@ -96,18 +92,8 @@ FeedDAO feedDAO;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
     }
-    
-//
-//    public String getFollowID() {
-//        return followID;
-//    }
-//
-//    public void setFollowID(String followID) {
-//        this.followID = followID;
-//    }
 
     public int promoteUser(String u) {
         try {
@@ -135,7 +121,6 @@ FeedDAO feedDAO;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
     }
 }

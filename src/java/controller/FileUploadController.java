@@ -33,8 +33,6 @@ public class FileUploadController implements Serializable {
     
     private static final String UPLOAD_DIR = "resources\\uploads";
 
-    private String destination = ".\\";
-
     public void upload(FileUploadEvent event) {
         //FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
         //FacesContext.getCurrentInstance().addMessage(null, msg);

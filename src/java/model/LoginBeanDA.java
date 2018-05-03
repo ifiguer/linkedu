@@ -7,10 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.faces.bean.ManagedProperty;
 
 public class LoginBeanDA implements Serializable {
-    
+
     public static LoginBean validInfo(String username, String password) {
         LoginBean lb = null;
         try {
@@ -23,14 +22,11 @@ public class LoginBeanDA implements Serializable {
             String myDB = "jdbc:derby://localhost:1527/Project353";
             Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
 
-            // The ? below are parameters (i.e., placeholders) to the query and are resolved
-            // in the setString method below
             String queryString = "select * from Project353.USERS where USERID = ? and PASSWORD = ?";
 
-            // Note the use of a diff class, called PreparedStatement
             PreparedStatement pstmt = DBConn.prepareStatement(queryString);
-            pstmt.setString(1, username); // replace the 1st ? with username
-            pstmt.setString(2, password); // replace the 2nd ? with password
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
 
             boolean r = rs.next();
@@ -67,14 +63,12 @@ public class LoginBeanDA implements Serializable {
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
             Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
-
-            String queryString = "select * from Project353.Users where USERID = '" + username + "'";
-            Statement stmt = DBConn.createStatement();
-
-            ResultSet rs = stmt.executeQuery(queryString);
-
+            String queryString = "select * from Project353.Users where USERID = ?";
+            PreparedStatement pstmt = DBConn.prepareStatement(queryString);
+            pstmt.setString(1, username);
+            
+            ResultSet rs = pstmt.executeQuery();
             boolean r = rs.next();
-
             DBConn.close();
             return r;
 
@@ -95,31 +89,23 @@ public class LoginBeanDA implements Serializable {
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
             Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
-
-            String insertString;
-            Statement stmt = DBConn.createStatement();
-            insertString = "INSERT INTO Project353.Users VALUES ('"
-                    + cust.getUsername()
-                    + "', '" + cust.getPassword()
-                    + "', '" + cust.getFirstname()
-                    + "', '" + cust.getLastname()
-                    + "', '" + cust.getEmail()
-                    + "', 'img/egg.jpg"
-                    + "', '"
-                    + "', '" + cust.getGradDetails()
-                    + "', '" + cust.getHighSchoolDetails()
-                    + "', false, "
-                    + cust.getActScore()
-                    + ", " + cust.getSatScore() 
-                    + ")";
-            rowCount = stmt.executeUpdate(insertString);
-            System.out.println("insert string =" + insertString);
+            String insertString2 = "INSERT INTO Project353.Users VALUES (?,?,?,?,?,'img/egg.jpg','',?,?,false,?,?)";
+            PreparedStatement pstmt = DBConn.prepareStatement(insertString2);
+            pstmt.setString(1, cust.getUsername());
+            pstmt.setString(2, cust.getPassword());
+            pstmt.setString(3, cust.getFirstname());
+            pstmt.setString(4, cust.getLastname());
+            pstmt.setString(5, cust.getEmail());
+            pstmt.setString(6, cust.getGradDetails());
+            pstmt.setString(7, cust.getHighSchoolDetails());
+            pstmt.setInt(8, cust.getActScore());
+            pstmt.setInt(9, cust.getSatScore());
+            rowCount = pstmt.executeUpdate();
+            System.out.println("insert string =" + insertString2);
             DBConn.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-
-        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
 
     }
@@ -146,7 +132,6 @@ public class LoginBeanDA implements Serializable {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
 
     }
@@ -166,11 +151,10 @@ public class LoginBeanDA implements Serializable {
             String insertString;
             Statement stmt = DBConn.createStatement();
             insertString = "UPDATE Project353.Users set ";
-
             insertString += (cust.getPassword().equals("") ? "" : "password='" + cust.getPassword() + "',");
             insertString += (cust.getEmail().equals("") ? "" : "email='" + cust.getEmail() + "',");
             insertString += (cust.getFirstname().equals("") ? "" : "firstname='" + cust.getFirstname() + "',");
-            insertString += (cust.getLastname().equals("") ? "" : "lastname='" + cust.getLastname() + "',");
+            insertString += (cust.getLastname().equals("") ? "" : "lastname='" + cust.getLastname() + "'");
             insertString += " where userid='" + cust.getUsername() + "'";
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
@@ -178,10 +162,8 @@ public class LoginBeanDA implements Serializable {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // if insert is successful, rowCount will be set to 1 (1 row inserted successfully). Else, insert failed.
         return rowCount;
 
     }
-    
-    
+
 }
