@@ -212,13 +212,13 @@ p, li {
     font-size: .9rem;
 }
 
-input[type=text], input[type=password], textarea {
+input[type=text], input[type=password], input[type=email], input[type=number], textarea {
     border-radius: 3px;
     border: 1px solid var(--border-color);
     padding: 10px;
 }
 
-input[type=text]:hover, input[type=password]:hover {
+input[type=text]:hover, input[type=password]:hover, input[type=email]:hover {
     border: 1px solid var(--primary);
     transition: border .2s ease-in;
 }
@@ -253,6 +253,14 @@ input[type=submit]:hover, input[type=button]:hover {
 
 .appointment div {
     padding: 1rem 0;
+}
+
+.bad {
+    background: #ffcdd2;
+}
+
+.good {
+    background: #c8e6c9;
 }
 
 .basic-info div, .education div, .major div {

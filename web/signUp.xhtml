@@ -2,7 +2,8 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/templates/base.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:define name="content"> 
         <h:panelGroup layout="block" class="error-message" rendered="#{not empty flash.signUpError}">
@@ -12,8 +13,8 @@
             <h1 class="title text-center">Sign Up</h1>
             <h:form class="signup-form">
                 <label for="username">Username</label>
-                <h:inputText value="#{LoginBean.username}" id="username" required="true">
-                    <f:ajax event="keyup"  listener="#{LoginBean.validateUserNameOnKey()}" render="usernamemessage"  />
+                <h:inputText class="#{LoginBean.usernamestyle}" value="#{LoginBean.username}" id="username" required="true">
+                    <f:ajax event="keyup"  listener="#{LoginBean.validateUserNameOnKey()}" render="username"  />
                 </h:inputText>
                 <label for="password">Password</label>
                 <h:inputSecret value="#{LoginBean.password}" id="password" required="true">
@@ -29,11 +30,10 @@
                 <label for="last-name">Last name</label>
                 <h:inputText value="#{LoginBean.lastname}" id="last-name" required="true"></h:inputText>
                 <label for="email">Email</label>
-                <h:inputText value="#{LoginBean.email}" id="email" required="true"></h:inputText>
+                <h:inputText p:type="email" value="#{LoginBean.email}" id="email" required="true"></h:inputText>
                 <h:commandButton value="Next" action="additionalInfo" />
 
             </h:form>
-            <h:outputText style="#{LoginBean.usernamestyle}" id="usernamemessage" value="#{LoginBean.usernamemessage}"></h:outputText>
         </div>
     </ui:define>
 </ui:composition>

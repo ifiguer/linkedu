@@ -232,16 +232,13 @@ public class LoginBean implements Serializable {
         return true;
     }
 
-    public String validateUserNameOnKey() {
+    public void validateUserNameOnKey() {
         if (LoginBeanDA.usernameTaken(getUsername())) {
             usernamemessage = "Username is already taken";
-            usernamestyle = "color:red";
-            return "Username is already taken";
+            usernamestyle = "bad";
         } else {
             usernamemessage = "Username is valid!";
-            usernamestyle = "color:green";
-            return "Username is valid!";
-
+            usernamestyle = "good";
         }
     }
 
