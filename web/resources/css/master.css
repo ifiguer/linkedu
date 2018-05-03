@@ -159,7 +159,7 @@ body {
     margin: 1rem auto;
 }
 
-.student-search-result {
+.student-search-result, .university-search-result {
     background: #eceff1;
     margin: 1rem 0;
     padding: 1rem;
