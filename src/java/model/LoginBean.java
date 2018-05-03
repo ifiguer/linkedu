@@ -83,10 +83,10 @@ public class LoginBean implements Serializable {
         }
         return "profile";
     }
-    
+
     private void addFlashAttribute(String key, String value) {
         FacesContext.getCurrentInstance().getExternalContext().getFlash()
-                    .put(key, value);
+                .put(key, value);
     }
 
     public String login() {
@@ -105,6 +105,21 @@ public class LoginBean implements Serializable {
     public String logOut() {
         loginSuccess = false;
         authenticationBean.logout();
+
+        username = "";
+        firstname = "";
+        lastname = "";
+        actScore = 0;
+        satScore = 0;
+        email = "";
+        this.password = "";
+        this.confirmPassword = "";
+        this.fullname = "";
+        this.universityOfChoice = "";
+        this.following = "";
+        this.highSchoolDetails = "";
+        this.majorOfChoice = "";
+        
         return "welcome";
     }
 
@@ -145,7 +160,7 @@ public class LoginBean implements Serializable {
         }
 
     }
-    
+
     private boolean sendMail() {
         String to = email;
         String from = "bmjame1@ilstu.edu";
