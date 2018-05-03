@@ -13,6 +13,9 @@ and open the template in the editor.
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="content">
+        <h:panelGroup layout="block" class="follow-message" rendered="#{not empty flash.followMessage}">
+            <h:outputText value="#{flash.followMessage}"></h:outputText>
+        </h:panelGroup>
         <div class="container">
             <h1 class="title">Search Results</h1>
             <div>

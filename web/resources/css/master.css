@@ -180,6 +180,11 @@ body {
     text-align: center;
     background: #ef9a9a;
 }
+.follow-message {
+    padding: 1rem;
+    text-align: center;
+    background: lightgrey;
+}
 
 .container {
     padding: 30px 0;

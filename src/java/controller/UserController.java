@@ -42,7 +42,6 @@ public class UserController implements Serializable {
     @ManagedProperty(value = "#{LoginBean}")
     private LoginBean temp;
     private ArrayList<User> searchStudentResults;
-    private String errorResponse;
     private String studentSearch;
     private String studentFollowID;
     private String userToContact;
@@ -58,13 +57,16 @@ public class UserController implements Serializable {
         }
 
     }
-
+    private void addFlashAttribute(String key, String value) {
+        FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put(key, value);
+    }
     public void followUser() {
         String userToFollow = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userToFollow");
         if (userDAO.addUserToFollowingList(temp, userToFollow) == 1) {
-            errorResponse = "Successfully followed user";
+            addFlashAttribute("followMessage", "Successfully followed user");
         } else {
-            errorResponse = "An error occurred following user";
+            addFlashAttribute("followMessage", "An error occurred, please try again later");
         }
     }
     public void promoteUser(){
@@ -154,14 +156,6 @@ public class UserController implements Serializable {
 
     public void setStudentSearch(String studentSearch) {
         this.studentSearch = studentSearch;
-    }
-
-    public String getErrorResponse() {
-        return errorResponse;
-    }
-
-    public void setErrorResponse(String errorResponse) {
-        this.errorResponse = errorResponse;
     }
 
     public String getStudentFollowID() {
