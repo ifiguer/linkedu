@@ -17,3 +17,5 @@ SAT					INTEGER
 
 
 );
+
+insert into Project353.users values ('admin','secure','LinkedU','Admin','bmjame1@ilstu.edu','img/egg.jpg','','May 2019','Harvard High',true,'999','9999');
