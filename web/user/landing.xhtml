@@ -56,7 +56,7 @@
                             <h:form>
                                 <input type="hidden" id="university" name="university" value="#{university.name}" />
                                 <c:if test="#{LoginBean.administrator eq true}">
-                                    <h:commandButton action="#{universityController.removeFeatured()}" value="X"/>
+                                    <h:commandButton class="cross" action="#{universityController.removeFeatured()}" value="X"/>
                                 </c:if>
                             </h:form>
                         </div>

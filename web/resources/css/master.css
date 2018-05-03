@@ -57,6 +57,9 @@ body {
 }
 
 .featured-university {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #f5f5f5;
     border: 1px solid var(--border-color);
     padding: 10px;
@@ -216,6 +219,20 @@ input[type=text], input[type=password], input[type=email], input[type=number], t
     border-radius: 3px;
     border: 1px solid var(--border-color);
     padding: 10px;
+}
+
+.featured-university form {
+    display: inline;
+}
+
+.featured-university .cross {
+    font-size: .8rem;
+    padding: 4px 7px;
+    background: lightcoral;
+}
+
+.featured-university .cross:hover {
+    background: red;
 }
 
 input[type=text]:hover, input[type=password]:hover, input[type=email]:hover {
