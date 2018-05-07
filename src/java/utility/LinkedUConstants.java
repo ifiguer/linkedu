@@ -10,6 +10,6 @@ package utility;
  * @author ibran
  */
 public final class LinkedUConstants {
-    public static final String DB_URL = "jdbc:derby://10.110.10.26:1527/bmjame1_spring2018_Project353;create=true";
-    public static final String DB_NAME = "bmjame1_spring2018_Project353";
+    public static final String DB_URL = "jdbc:derby://10.110.10.26:1527/bmjame1_spring2018_Project353";
+    public static final String DB_NAME = "APP";
 }

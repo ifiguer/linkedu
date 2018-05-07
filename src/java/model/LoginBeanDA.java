@@ -7,9 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import utility.LinkedUConstants;
 
 public class LoginBeanDA implements Serializable {
-
+    private static final String DB_URL = LinkedUConstants.DB_URL;
+    private static final String DB_NAME = LinkedUConstants.DB_NAME;
     public static LoginBean validInfo(String username, String password) {
         LoginBean lb = null;
         try {
@@ -20,9 +22,9 @@ public class LoginBeanDA implements Serializable {
         }
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
 
-            String queryString = "select * from Project353.USERS where USERID = ? and PASSWORD = ?";
+            String queryString = "select * from " + DB_NAME  +".USERS where USERID = ? and PASSWORD = ?";
 
             PreparedStatement pstmt = DBConn.prepareStatement(queryString);
             pstmt.setString(1, username);
@@ -62,8 +64,8 @@ public class LoginBeanDA implements Serializable {
         }
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
-            String queryString = "select * from Project353.Users where USERID = ?";
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
+            String queryString = "select * from " + DB_NAME + ".Users where USERID = ?";
             PreparedStatement pstmt = DBConn.prepareStatement(queryString);
             pstmt.setString(1, username);
             
@@ -88,8 +90,8 @@ public class LoginBeanDA implements Serializable {
         int rowCount = 0;
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
-            String insertString2 = "INSERT INTO Project353.Users VALUES (?,?,?,?,?,'img/egg.jpg','',?,?,false,?,?)";
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
+            String insertString2 = "INSERT INTO " + DB_NAME + ".Users VALUES (?,?,?,?,?,'img/egg.jpg','',?,?,false,?,?)";
             PreparedStatement pstmt = DBConn.prepareStatement(insertString2);
             pstmt.setString(1, cust.getUsername());
             pstmt.setString(2, cust.getPassword());
@@ -120,11 +122,11 @@ public class LoginBeanDA implements Serializable {
         int rowCount = 0;
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
 
             String insertString;
             Statement stmt = DBConn.createStatement();
-            insertString = "UPDATE Project353.Users set " + "profileURL='uploads\\" + profileURL + "' where userid='" + username + "'";
+            insertString = "UPDATE " + DB_NAME + ".Users set " + "profileURL='uploads\\" + profileURL + "' where userid='" + username + "'";
 
             rowCount = stmt.executeUpdate(insertString);
             System.out.println("insert string =" + insertString);
@@ -146,11 +148,11 @@ public class LoginBeanDA implements Serializable {
         int rowCount = 0;
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
 
             String insertString;
             Statement stmt = DBConn.createStatement();
-            insertString = "UPDATE Project353.Users set ";
+            insertString = "UPDATE " + DB_NAME + ".Users set ";
             insertString += (cust.getPassword().equals("") ? "" : "password='" + cust.getPassword() + "',");
             insertString += (cust.getEmail().equals("") ? "" : "email='" + cust.getEmail() + "',");
             insertString += (cust.getFirstname().equals("") ? "" : "firstname='" + cust.getFirstname() + "',");

@@ -60,7 +60,7 @@ public class UniversityDAO implements Serializable {
         }
 
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
-            String queryString = "select * from " + DB_NAME + ".Universities where Project353.Universities.featured";
+            String queryString = "select * from " + DB_NAME + ".Universities where " + DB_NAME + ".Universities.featured";
 
             PreparedStatement pstmt = connection.prepareStatement(queryString);
             ResultSet rs = pstmt.executeQuery();

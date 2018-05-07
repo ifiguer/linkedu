@@ -29,7 +29,7 @@ public class UserDAO implements Serializable {
     private static final String USERNAME = "itkstu";
     private static final String PASSWORD = "student";
     private static final String SEARCH_QUERY_BY_NAME = "SELECT firstname,lastname,userID,profileURL,gradDetails,highSchooldetails "
-            + "FROM" + DB_NAME + ".Users WHERE Upper(firstname || ' ' || lastname) LIKE Upper('%'||?||'%') OR UPPER(firstname) LIKE upper('%'||?||'%') OR UPPER(lastname) LIKE UPPER('%'||?||'%')";
+            + "FROM " + DB_NAME + ".Users WHERE Upper(firstname || ' ' || lastname) LIKE Upper('%'||?||'%') OR UPPER(firstname) LIKE upper('%'||?||'%') OR UPPER(lastname) LIKE UPPER('%'||?||'%')";
     private static final String DELIMITER = ":";
     @Inject
     FeedDAO feedDAO;
