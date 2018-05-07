@@ -11,13 +11,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import model.University;
+import utility.LinkedUConstants;
 
 public class UniversityDAO implements Serializable {
 
-    private static final String DB_URL = "jdbc:derby://localhost:1527/Project353";
+    private static final String DB_URL = LinkedUConstants.DB_URL;//"jdbc:derby://localhost:1527/Project353";
+    private static final String DB_NAME = LinkedUConstants.DB_NAME;
     private static final String USERNAME = "itkstu";
     private static final String PASSWORD = "student";
-    private static final String QUERY_BY_NAME = "SELECT * FROM Project353.UNIVERSITIES WHERE upper(NAME) LIKE upper('%'||?||'%')";
+    private static final String QUERY_BY_NAME = "SELECT * FROM " + DB_NAME +".UNIVERSITIES WHERE upper(NAME) LIKE upper('%'||?||'%')";
 
     public List<University> getUniversityByName(String name) {
         University university;
@@ -58,7 +60,7 @@ public class UniversityDAO implements Serializable {
         }
 
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
-            String queryString = "select * from Project353.Universities where Project353.Universities.featured";
+            String queryString = "select * from " + DB_NAME + ".Universities where Project353.Universities.featured";
 
             PreparedStatement pstmt = connection.prepareStatement(queryString);
             ResultSet rs = pstmt.executeQuery();
@@ -84,11 +86,11 @@ public class UniversityDAO implements Serializable {
         int rowCount = 0;
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
 
             String insertString;
             Statement stmt = DBConn.createStatement();
-            insertString = "UPDATE Project353.Universities set ";
+            insertString = "UPDATE " + DB_NAME + ".Universities set ";
             insertString += "featured=true";
             
             
@@ -112,12 +114,12 @@ public class UniversityDAO implements Serializable {
         }
         int rowCount = 0;
         try {
-            String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+            //String myDB = "jdbc:derby://localhost:1527/Project353";
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
 
             String insertString;
             Statement stmt = DBConn.createStatement();
-            insertString = "UPDATE Project353.Universities set ";
+            insertString = "UPDATE " + DB_NAME + ".Universities set ";
             insertString += "featured=false";
             
             

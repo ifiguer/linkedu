@@ -16,18 +16,20 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import model.LoginBean;
 import model.User;
-
+import utility.LinkedUConstants;
 /**
  *
  * @author it353s836
  */
 public class UserDAO implements Serializable {
 
-    private static final String DB_URL = "jdbc:derby://localhost:1527/Project353";
+    private static final String DB_URL = LinkedUConstants.DB_URL;
+    private static final String DB_NAME = LinkedUConstants.DB_NAME;
+    
     private static final String USERNAME = "itkstu";
     private static final String PASSWORD = "student";
     private static final String SEARCH_QUERY_BY_NAME = "SELECT firstname,lastname,userID,profileURL,gradDetails,highSchooldetails "
-            + "FROM Project353.Users WHERE Upper(firstname || ' ' || lastname) LIKE Upper('%'||?||'%') OR UPPER(firstname) LIKE upper('%'||?||'%') OR UPPER(lastname) LIKE UPPER('%'||?||'%')";
+            + "FROM" + DB_NAME + ".Users WHERE Upper(firstname || ' ' || lastname) LIKE Upper('%'||?||'%') OR UPPER(firstname) LIKE upper('%'||?||'%') OR UPPER(lastname) LIKE UPPER('%'||?||'%')";
     private static final String DELIMITER = ":";
     @Inject
     FeedDAO feedDAO;
@@ -76,12 +78,12 @@ public class UserDAO implements Serializable {
         }
         int rowCount = 0;
         try {
-            String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+            //String myDB = "jdbc:derby://localhost:1527/Project353";
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
 
             String insertString;
             Statement stmt = DBConn.createStatement();
-            insertString = "UPDATE Project353.Users set ";
+            insertString = "UPDATE " + DB_NAME +".Users set ";
             insertString += "following='";
             insertString += (cust.getFollowing().equals("") ? followID + "'" : cust.getFollowing() + DELIMITER + followID + "'");
             cust.setFollowing(cust.getFollowing().equals("") ? followID : cust.getFollowing() + DELIMITER + followID);
@@ -106,11 +108,11 @@ public class UserDAO implements Serializable {
         int rowCount = 0;
         try {
             String myDB = "jdbc:derby://localhost:1527/Project353";
-            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+            Connection DBConn = DriverManager.getConnection(DB_URL, "itkstu", "student");
 
             String insertString;
             Statement stmt = DBConn.createStatement();
-            insertString = "UPDATE Project353.Users set ";
+            insertString = "UPDATE " + DB_NAME + ".Users set ";
             insertString += "administrator=true";
 
             insertString += " where userid='" + u + "'";
